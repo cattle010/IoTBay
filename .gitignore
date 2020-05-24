@@ -1,2 +1,4 @@
 # Ignore OSX generated .DS_Store hidden files
 .DS_Store
+/build/
+/dist/
