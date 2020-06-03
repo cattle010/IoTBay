@@ -4,6 +4,7 @@
     Author     : jason
 --%>
 
+<%@page import="uts.isd.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <title>IoTBay Online Storefront</title>
+        <%
+            User user = (User) session.getAttribute("user");
+        %>    
     </head>
     <body>
         <div class="container">
@@ -19,7 +23,11 @@
                 <a class="nav-link active" href="register.jsp">Register</a>
                 <a class="nav-link active" href="login.jsp">Login</a>
             </nav>
+            <% if (user != null) { %>
+                <p>Hi there ${user.userFirstName}</p>             
+            <% } %>
         </div>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <jsp:include page="/ConnServlet" flush="true" />
     </body>
 </html>
