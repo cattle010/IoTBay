@@ -18,13 +18,18 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center">IoTBay</h1>
-            <nav class="nav justify-content-center">
-                <a class="nav-link active" href="register.jsp">Register</a>
-                <a class="nav-link active" href="login.jsp">Login</a>
-            </nav>
+            <h1 class="text-center">IoTBay</h1>            
             <% if (user != null) { %>
-                <p>Hi there ${user.userFirstName}</p>             
+                <nav class="nav justify-content-center">
+                    <a class="nav-link active" href="account.jsp">Account</a>                    
+                    <a class="nav-link active" href="logout.jsp">Logout</a>
+                </nav>
+                <p>Hello there ${user.userEmail}</p>
+            <% } else { %>
+                <nav class="nav justify-content-center">
+                    <a class="nav-link active" href="register.jsp">Register</a>
+                    <a class="nav-link active" href="login.jsp">Login</a>
+                </nav>
             <% } %>
         </div>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
