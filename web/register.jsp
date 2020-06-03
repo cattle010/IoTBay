@@ -16,35 +16,35 @@
     <body>
         <div class="container">
             <h1>Register</h1>
-            <form method="post">
+            <form method="post" action="RegisterServlet">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" placeholder="Enter first name here...">
+                        <input name="firstName" type="text" class="form-control" placeholder="Enter first name here..." required>
                     </div>
                     <div class="form-group col">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Enter last name here...">
+                        <input name="lastName" type="text" class="form-control" placeholder="Enter last name here..." required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" class="form-control" placeholder="Enter email here...">
+                    <input name="email"type="email" class="form-control" placeholder="Enter email here..." required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control">
+                    <input name="password" type="password" class="form-control" required>
                 </div>                
                 <div class="form-group">
                     <label for="phonenumber">Phone number (Optional)</label>
-                    <input type="text" class="form-control" placeholder="9999 999 999">
+                    <input name="phoneNumber" type="text" class="form-control" placeholder="9999 999 999">
                 </div>
                 <div class="form-group">
                     <a class="form-text text-muted" href="login.jsp">Already have an account? Log in here!</a>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block">Back</button>
+                        <a href="index.jsp"><button type="button" href="index.jsp" class="btn btn-secondary btn-lg btn-block">Back</button></a>
                     </div>
                     <div class="form-group col">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>                

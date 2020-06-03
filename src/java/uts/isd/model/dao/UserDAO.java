@@ -31,7 +31,7 @@ public class UserDAO {
     
     //Create User
     public void addUser(String userEmail, String userFirstName, String userLastName, String password, String phoneNumber) throws SQLException {
-        String query = "INSERT INTO iotbaydb.USER_T(UserEmail, UserFirstName, UserLastName, Password, PhoneNumber, IsStaffUser, IsRegisteredUser) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO iotbayadmin.USER_T(UserEmail, UserFirstName, UserLastName, Password, PhoneNumber, IsStaffUser, IsRegisteredUser) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, userEmail);
             pstmt.setString(2, userFirstName);
@@ -49,7 +49,7 @@ public class UserDAO {
     
     //Read User
     public User findUser(String userEmail) throws SQLException {
-        String fetch = "SELECT * FROM iotbaydb.USER_T WHERE UserEmail=?";
+        String fetch = "SELECT * FROM iotbayadmin.USER_T WHERE USEREMAIL=?";
         PreparedStatement pstmt = conn.prepareStatement(fetch);
         pstmt.setString(1, userEmail);
         ResultSet rs = pstmt.executeQuery();
@@ -72,7 +72,7 @@ public class UserDAO {
     
     //Update User
     public void updateUser(String userEmail, String userFirstName, String userLastName, String password, String phoneNumber) throws SQLException {
-        String query = "UPDATE iotbay.USER_T SET UserEmail=?, UserFirstName=?, UserLastName=?, Password=?, PhoneNumber=?, isStaffUser=?, isRegisteredUser=?";
+        String query = "UPDATE iotbayadmin.USER_T SET UserEmail=?, UserFirstName=?, UserLastName=?, Password=?, PhoneNumber=?, isStaffUser=?, isRegisteredUser=?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);
         pstmt.setString(2, userFirstName);
@@ -87,7 +87,7 @@ public class UserDAO {
     
     //Delete User
     public void deleteUser(String userEmail) throws SQLException {
-        String query = "DELETE FROM iotbaydb.USERS_T WHERE UserEmail=?";
+        String query = "DELETE FROM iotbayadmin.USER_T WHERE UserEmail=?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);
         pstmt.executeQuery();
@@ -96,7 +96,7 @@ public class UserDAO {
     
     //Check User in Database
     public boolean checkUser(String userEmail) throws SQLException {
-        String query = "SELECT * FROM iotbaydb.USERS_T WHERE UserEmail=?";
+        String query = "SELECT * FROM iotbayadmin.USER_T WHERE USEREMAIL=?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);
         ResultSet rs = pstmt.executeQuery();

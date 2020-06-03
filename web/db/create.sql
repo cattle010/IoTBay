@@ -105,18 +105,18 @@ Insert mock data into the datebase to enable functionality
 
 -- USER_T Entries
 INSERT INTO USER_T(UserEmail, UserFirstName, UserLastName, Password, PhoneNumber, IsStaffUser, IsRegisteredUser) VALUES
-('superadmin@iotbay.com', 'Super', 'Admin', 'dc%ham0XVHWoG$vl39mqNh3DCg', '0404 040 404', TRUE, FALSE),
-('john_smith@iotbay.com', 'John', 'Smith', 'EEhR0do92U%bo9te1Z4^eF35ep', '0404 404 404', TRUE, FALSE),
-('tiffanyblack@iotbay.com', 'Tiffany', 'Black', '#8QW$q7DqcMqeks$FKfE#14tcU', '0404 090 404', TRUE, FALSE),
-('ceripollard@iotbay.com', 'Ceri', 'Pollard', 'Mo7FJudziFNd6*29%crgTw&cfs', '0404 030 404', TRUE, FALSE),
-('le0little@gmail.com', 'Leonard', 'Little', 'kkEF3lt0!AFN84o&%Kq8P^smh@', '0400 010 124', FALSE, TRUE),
-('eplummer66@yahoo.com', 'Elissa', 'Plummer', '$zfxnpxRNUStMcdwX!ZlpI4%9E', '0412 043 674', FALSE, FALSE),
-('kredman8@outlook.com', 'Keanu', 'Redman', 'V&Q^s@qxY!*K17&%l3Kn58c3pt', NULL, FALSE, FALSE),
-('m.peacock@gmail.com', 'Mohammed', 'Peacock', 'nwAHwmJL8zthIx$c85VO8$As!0', '0404 074 323', FALSE, TRUE),
-('kerry_ryan123@live.com', 'Kerry', 'Rogers', '2F1MUQDi#f7aI^V6A*mn%m5A2W', '0404 086 357', FALSE, TRUE),
-('s_turnbull99@gmail.com', 'Selina', 'Turnbull', 'DszN!7#e&LVE4l8HLMb&ca^CRg', '0404 531 054', FALSE, FALSE),
-('c_roman@outlook.com', 'Coral', 'Roman', 'opfT0u9wBg0$##FgIGZ^^vO$vo', NULL, FALSE, TRUE),
-('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'ZzDlK##96bS1A2uQc&ZlrOZ5s7', '0404 784 865', FALSE, FALSE);
+('superadmin@iotbay.com', 'Super', 'Admin', 'xrQQSvuW48l9vxSl09vSCjqzVQ', '0404 040 404', TRUE, FALSE),
+('john_smith@iotbay.com', 'John', 'Smith', 'a40R0Bl2lHbNodzcN5kC7714ph', '0404 404 404', TRUE, FALSE),
+('tiffanyblack@iotbay.com', 'Tiffany', 'Black', 'MvaSm3GFt82Sy8Wr3u0Y4hS4nd', '0404 090 404', TRUE, FALSE),
+('ceripollard@iotbay.com', 'Ceri', 'Pollard', 'PLs4K17BPUEy01nNHLjmNDmoyI', '0404 030 404', TRUE, FALSE),
+('le0little@gmail.com', 'Leonard', 'Little', 'z0fb02pJvvl56987naEcTe6p5K', '0400 010 124', FALSE, TRUE),
+('eplummer66@yahoo.com', 'Elissa', 'Plummer', 'HLpOBvUbjGbz3jSZXN4s66D99u', '0412 043 674', FALSE, FALSE),
+('kredman8@outlook.com', 'Keanu', 'Redman', 'Fx8JJoxG2UMM9IQhH8m48b5wSJ', NULL, FALSE, FALSE),
+('m.peacock@gmail.com', 'Mohammed', 'Peacock', '44F98QzlpO2ra6L5pUrVWQqBjZ', '0404 074 323', FALSE, TRUE),
+('kerry_ryan123@live.com', 'Kerry', 'Rogers', 'cW7r8k6aHxqXRKy0cKX2v9tht8', '0404 086 357', FALSE, TRUE),
+('s_turnbull99@gmail.com', 'Selina', 'Turnbull', 'C85oWWE4mqfYuqcNzhlZPrZvU1', '0404 531 054', FALSE, FALSE),
+('c_roman@outlook.com', 'Coral', 'Roman', 'eU668CCHDEUDRmZKcE7rsdQBCW', NULL, FALSE, TRUE),
+('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'DuFlB37K7uTCePEuYeN574eU88', '0404 784 865', FALSE, FALSE);
 
 -- ACCESSLOG_T Entries
 INSERT INTO ACCESSLOG_T(UserID, UserLoginTime, UserLogoutTime) VALUES 
@@ -170,7 +170,7 @@ INSERT INTO SHIPPINGADDRESS_T(StreetNumber, StreetName, City, State, Postcode, C
 ('18', 'Smitherson Street', 'Lane Cove', 'NSW', 2066, 'Australia');
 
 -- PRODUCT_T Entries
-INSERT INTO PRODUCT_T(ProductName, BrandName, Description, CostPerUnit, Quantity) VALUES 
+INSERT INTO PRODUCT_T(ProductName, BrandName, Description, CostPerUnit, Stock) VALUES 
 ('Raspberry Pi 4 Model B 2GB', 'Raspberry Pi', 'Raspberry Pi 4 is a huge leap forward for single-board computing, it''s now a true PC replacement for a wide range of uses at home, in school projects and inside commercial products. This new-found performance is powered by a significant increase in the processor, multimedia and I/O technology.', 0074.50, 100),
 ('Raspberry Pi 4 Model B 4GB', 'Raspberry Pi', 'Raspberry Pi 4 is a huge leap forward for single-board computing, it''s now a true PC replacement for a wide range of uses at home, in school projects and inside commercial products. This new-found performance is powered by a significant increase in the processor, multimedia and I/O technology.', 0102.00, 100),
 ('Raspberry Pi 3 Model B+', 'Raspberry Pi', 'The Raspberry Pi 3 Model B+ (note the plus on the end) is the latest generation board released by the Raspberry Pi Foundation on 14 March 2018. It has a 1.4Ghz Quad-Core Processor, WiFi, Bluetooth, HDMI, USB along with much more. Oh, and it''s about the size of a credit card!', 0059.50, 100),

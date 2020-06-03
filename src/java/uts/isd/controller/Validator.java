@@ -15,8 +15,10 @@ import javax.servlet.http.HttpSession;
  */
 public class Validator implements Serializable{ 
    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
-   private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
-   private String passwordPattern = "[a-z0-9]{4,}";       
+   //private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
+   private String namePattern = "([A-Za-z]+)";       
+   private String passwordPattern = "[A-Za-z0-9]{4,}";
+   private String phonePattern = "([0-9]{10,})";
               
    public Validator() {    
        //empty
@@ -31,6 +33,10 @@ public class Validator implements Serializable{
       return  email.isEmpty() || password.isEmpty();   
    }
    
+   public boolean checkRegisterEmpty(String firstName, String lastName, String email, String password, String phoneNumber){       
+      return  firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || phoneNumber.isEmpty();   
+   }
+   
    public boolean validateEmail(String email){                       
       return validate(emailPattern,email);   
    }
@@ -43,10 +49,16 @@ public class Validator implements Serializable{
       return validate(passwordPattern,password); 
    }
    
+   public boolean validatePhoneNumber(String phoneNumber) {
+       return validate(phonePattern, phoneNumber);
+   }
+   
    public void clear(HttpSession session) {
        session.setAttribute("emailErr", "Enter email");
        session.setAttribute("passErr", "Enter password");
        session.setAttribute("existErr", "");
-       session.setAttribute("nameErr", "Enter name");
+       session.setAttribute("phoneErr", "Please enter phone number");
+       session.setAttribute("emptyErr", "Please fill in the required fields");
+       session.setAttribute("addErr", "User not added to system");
    }
 }
