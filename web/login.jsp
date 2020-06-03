@@ -30,7 +30,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Back</button>
+                    <a href="index.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
                 </div>
                 <div class="form-group col">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>                
