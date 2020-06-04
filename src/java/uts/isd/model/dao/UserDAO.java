@@ -71,8 +71,8 @@ public class UserDAO {
     }
     
     //Update User
-    public void updateUser(String userEmail, String userFirstName, String userLastName, String password, String phoneNumber) throws SQLException {
-        String query = "UPDATE iotbayadmin.USER_T SET UserEmail=?, UserFirstName=?, UserLastName=?, Password=?, PhoneNumber=?, isStaffUser=?, isRegisteredUser=?";
+    public void updateUser(int id, String userEmail, String userFirstName, String userLastName, String password, String phoneNumber) throws SQLException {        
+        String query = "UPDATE iotbayadmin.USER_T SET UserEmail=?, UserFirstName=?, UserLastName=?, Password=?, PhoneNumber=?, isStaffUser=?, isRegisteredUser=? WHERE UserId = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, userEmail);
         pstmt.setString(2, userFirstName);
@@ -81,7 +81,8 @@ public class UserDAO {
         pstmt.setString(5, phoneNumber);
         pstmt.setBoolean(6, false);
         pstmt.setBoolean(7, true);
-        pstmt.executeQuery();
+        pstmt.setInt(8, id);
+        pstmt.executeUpdate();
         pstmt.close();
     }
     

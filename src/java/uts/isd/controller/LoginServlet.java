@@ -29,8 +29,8 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password").trim();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         User user = null;
         validator.clear(session);      
