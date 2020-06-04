@@ -21,14 +21,14 @@
             <h1 class="text-center">IoTBay</h1>            
             <% if (user != null) { %>
                 <nav class="nav justify-content-center">
-                    <a class="nav-link active" href="account.jsp">Account</a>                    
-                    <a class="nav-link active" href="logout.jsp">Logout</a>
+                    <a class="nav-link nav-item active" href="account.jsp">Account</a>                    
+                    <a class="nav-link nav-item active" href="logout.jsp">Logout</a>
                 </nav>
                 <p>Hello there ${user.userEmail}</p>
             <% } else { %>
                 <nav class="nav justify-content-center">
-                    <a class="nav-link active" href="register.jsp">Register</a>
-                    <a class="nav-link active" href="login.jsp">Login</a>
+                    <a class="nav-link nav-item active" href="register.jsp">Register</a>
+                    <a class="nav-link nav-item active" href="login.jsp">Login</a>
                 </nav>
             <% } %>
         </div>

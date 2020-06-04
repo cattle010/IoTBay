@@ -27,27 +27,28 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
         HttpSession session = request.getSession();       
         Validator validator = new Validator();        
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String phoneNumber = request.getParameter("phoneNumber");  
+        String firstName = request.getParameter("firstName").trim();
+        String lastName = request.getParameter("lastName").trim();
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password").trim();
+        String phoneNumber = request.getParameter("phoneNumber").trim();  
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         User user = null;
         validator.clear(session);
     
         try {
-            if (userDAO.checkUser(email)) {
-                session.setAttribute("existErr", "This user already exists");
+            user = userDAO.findUser(email);
+            if (user != null) {
+                session.setAttribute("existErr", "Error: This user already exists");
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else if (!validator.checkRegisterEmpty(firstName, lastName, email, password, phoneNumber)) {           
                 session.setAttribute("emptyErr", "Error: Please fill in the required fields");
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else if (!validator.validateName(firstName)) {           
-                session.setAttribute("nameErr", "Error: First name format incorrect");
+                session.setAttribute("firstNameErr", "Error: First name format incorrect");
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else if (!validator.validateName(lastName)) {           
-                session.setAttribute("nameErr", "Error: Last name format incorrect");
+                session.setAttribute("lastNameErr", "Error: Last name format incorrect");
                 request.getRequestDispatcher("register.jsp").include(request, response);
             } else if (!validator.validateEmail(email)) {           
                 session.setAttribute("emailErr", "Error: Email format incorrect");
