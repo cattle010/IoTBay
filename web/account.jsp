@@ -61,6 +61,9 @@
                                 </tr>
                             </tbody>                                                        
                         </table>
+                        <div class="text-right">
+                            <a href="deleteUser.jsp"><button type="button" class="btn btn-danger">Delete Account</button></a>
+                        </div>
                     </div>
                 </div>
                 <div class="sidebar-expanded col-2 d-none d-md-block">                    

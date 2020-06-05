@@ -87,11 +87,11 @@ public class UserDAO {
     }
     
     //Delete User
-    public void deleteUser(String userEmail) throws SQLException {
-        String query = "DELETE FROM iotbayadmin.USER_T WHERE UserEmail=?";
+    public void deleteUser(int userID) throws SQLException {
+        String query = "DELETE FROM iotbayadmin.USER_T WHERE UserID=?";
         PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setString(1, userEmail);
-        pstmt.executeQuery();
+        pstmt.setInt(1, userID);
+        pstmt.executeUpdate();
         pstmt.close();
     }
     
