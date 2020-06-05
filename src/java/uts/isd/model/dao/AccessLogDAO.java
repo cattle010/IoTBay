@@ -32,7 +32,7 @@ public class AccessLogDAO {
     }
     
     //CREATE AccessLog Operation
-    public void addLoginLog(int userID, String logEvent) throws SQLException {
+    public void addLog(int userID, String logEvent) throws SQLException {
         String query = "INSERT INTO iotbayadmin.ACCESSLOG_T(UserID, LogEventTime, LogEvent) VALUES (?, ?, ?)";
         Date date = new Date();
         Timestamp time = new Timestamp(date.getTime());
@@ -45,12 +45,12 @@ public class AccessLogDAO {
     }
     
     //READ AccessLog Operation
-    public ArrayList<AccessLog> findLogs(int id) throws SQLException {
+    public ArrayList<AccessLog> fetchAllLogs(int id) throws SQLException {
         ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();
         String query = "SELECT * FROM iotbayadmin.ACCESSLOG_T WHERE UserId = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setInt(1, id);
-        ResultSet rs = pstmt.executeQuery(query);        
+        ResultSet rs = pstmt.executeQuery();        
         
         while (rs.next()) {
             int accessLogID = rs.getInt(1);
@@ -64,7 +64,7 @@ public class AccessLogDAO {
     }
     
     //FIND BY DATE AccessLog Operation
-    public ArrayList<AccessLog> findLogsByDate(int id, Timestamp start, Timestamp end) throws SQLException {
+    public ArrayList<AccessLog> fetchLogsByDate(int id, Timestamp start, Timestamp end) throws SQLException {
         ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();
         String query = "SELECT * FROM iotbayadmin.ACCESSLOG_T WHERE UserId = ? AND EventLogTime >= ? AND EventLogTime <= ?";
         PreparedStatement pstmt = conn.prepareStatement(query);

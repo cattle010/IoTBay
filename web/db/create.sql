@@ -41,7 +41,7 @@ CREATE TABLE ACCESSLOG_T (
     LogEventTime TIMESTAMP NOT NULL,
     LogEvent VARCHAR(20) NOT NULL,
     CONSTRAINT ACCESSLOG_PK PRIMARY KEY (AccessLogID),
-    CONSTRAINT ACCESSLOG_FK FOREIGN KEY (UserID) REFERENCES USER_T(UserID)
+    CONSTRAINT ACCESSLOG_FK FOREIGN KEY (UserID) REFERENCES USER_T(UserID) ON DELETE CASCADE
 );
 
 CREATE TABLE PAYMENT_T (
@@ -105,18 +105,18 @@ Insert mock data into the datebase to enable functionality
 
 -- USER_T Entries
 INSERT INTO USER_T(UserEmail, UserFirstName, UserLastName, Password, PhoneNumber, IsStaffUser, IsRegisteredUser) VALUES
-('superadmin@iotbay.com', 'Super', 'Admin', 'xrQQSvuW48l9vxSl09vSCjqzVQ', '0404 040 404', TRUE, FALSE),
-('john_smith@iotbay.com', 'John', 'Smith', 'a40R0Bl2lHbNodzcN5kC7714ph', '0404 404 404', TRUE, FALSE),
-('tiffanyblack@iotbay.com', 'Tiffany', 'Black', 'MvaSm3GFt82Sy8Wr3u0Y4hS4nd', '0404 090 404', TRUE, FALSE),
-('ceripollard@iotbay.com', 'Ceri', 'Pollard', 'PLs4K17BPUEy01nNHLjmNDmoyI', '0404 030 404', TRUE, FALSE),
-('le0little@gmail.com', 'Leonard', 'Little', 'z0fb02pJvvl56987naEcTe6p5K', '0400 010 124', FALSE, TRUE),
-('eplummer66@yahoo.com', 'Elissa', 'Plummer', 'HLpOBvUbjGbz3jSZXN4s66D99u', '0412 043 674', FALSE, FALSE),
+('superadmin@iotbay.com', 'Super', 'Admin', 'xrQQSvuW48l9vxSl09vSCjqzVQ', '0404040404', TRUE, FALSE),
+('john_smith@iotbay.com', 'John', 'Smith', 'a40R0Bl2lHbNodzcN5kC7714ph', '0404404404', TRUE, FALSE),
+('tiffanyblack@iotbay.com', 'Tiffany', 'Black', 'MvaSm3GFt82Sy8Wr3u0Y4hS4nd', '0404090404', TRUE, FALSE),
+('ceripollard@iotbay.com', 'Ceri', 'Pollard', 'PLs4K17BPUEy01nNHLjmNDmoyI', '0404030404', TRUE, FALSE),
+('le0little@gmail.com', 'Leonard', 'Little', 'z0fb02pJvvl56987naEcTe6p5K', '0400010124', FALSE, TRUE),
+('eplummer66@yahoo.com', 'Elissa', 'Plummer', 'HLpOBvUbjGbz3jSZXN4s66D99u', '0412043674', FALSE, FALSE),
 ('kredman8@outlook.com', 'Keanu', 'Redman', 'Fx8JJoxG2UMM9IQhH8m48b5wSJ', NULL, FALSE, FALSE),
-('m.peacock@gmail.com', 'Mohammed', 'Peacock', '44F98QzlpO2ra6L5pUrVWQqBjZ', '0404 074 323', FALSE, TRUE),
-('kerry_ryan123@live.com', 'Kerry', 'Rogers', 'cW7r8k6aHxqXRKy0cKX2v9tht8', '0404 086 357', FALSE, TRUE),
-('s_turnbull99@gmail.com', 'Selina', 'Turnbull', 'C85oWWE4mqfYuqcNzhlZPrZvU1', '0404 531 054', FALSE, FALSE),
+('m.peacock@gmail.com', 'Mohammed', 'Peacock', '44F98QzlpO2ra6L5pUrVWQqBjZ', '0404074323', FALSE, TRUE),
+('kerry_ryan123@live.com', 'Kerry', 'Rogers', 'cW7r8k6aHxqXRKy0cKX2v9tht8', '0404086357', FALSE, TRUE),
+('s_turnbull99@gmail.com', 'Selina', 'Turnbull', 'C85oWWE4mqfYuqcNzhlZPrZvU1', '0404531054', FALSE, FALSE),
 ('c_roman@outlook.com', 'Coral', 'Roman', 'eU668CCHDEUDRmZKcE7rsdQBCW', NULL, FALSE, TRUE),
-('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'DuFlB37K7uTCePEuYeN574eU88', '0404 784 865', FALSE, FALSE);
+('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'DuFlB37K7uTCePEuYeN574eU88', '0404784865', FALSE, FALSE);
 
 -- ACCESSLOG_T Entries
 INSERT INTO ACCESSLOG_T(UserID, LogEventTime, LogEvent) VALUES 

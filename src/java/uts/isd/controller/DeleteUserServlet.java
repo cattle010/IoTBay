@@ -37,13 +37,13 @@ public class DeleteUserServlet extends HttpServlet {
             try {
                 userDAO.deleteUser(userID);
                 session.invalidate();
+                response.sendRedirect("index.jsp");
             } catch (SQLException ex) {
                 Logger.getLogger(DeleteUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             session.setAttribute("userExistErr", "Error: User does not exist");
             request.getRequestDispatcher("deleteUser.jsp").include(request, response);
-        }
-        response.sendRedirect("index.jsp");
+        }        
     }                 
 }
