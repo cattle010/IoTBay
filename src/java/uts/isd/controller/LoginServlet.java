@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email").trim();
         String password = request.getParameter("password").trim();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+        AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");
         User user = null;
         validator.clear(session);      
         
@@ -50,6 +51,11 @@ public class LoginServlet extends HttpServlet {
         } else if (user != null) {
             if (user.getPassword().equals(password)) {
                 session.setAttribute("user", user);
+                try {
+                    accessLogDAO.addLog(user.getUserID(), "User Logged In");
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }            
             request.getRequestDispatcher("index.jsp").include(request, response);
         } else {                       

@@ -31,7 +31,7 @@ public class EditUserServlet extends HttpServlet {
         String lastName = request.getParameter("lastName").trim();
         String email = request.getParameter("email").trim();
         String password = request.getParameter("password").trim();
-        String phoneNumber = request.getParameter("phoneNumber").trim();  
+        String phoneNumber = request.getParameter("phoneNumber").trim();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         User currentUser = (User) session.getAttribute("user");
         User user = null;
