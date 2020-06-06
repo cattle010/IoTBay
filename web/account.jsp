@@ -68,7 +68,7 @@
                 </div>
                 <div class="sidebar-expanded col-2 d-none d-md-block">                    
                     <nav class="list-group sticky-top sticky-offset">
-                        <a class="nav-link nav-item active" href="editUserDetails.jsp">Edit Details</a>
+                        <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
                         <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
                     </nav>                    
                 </div>

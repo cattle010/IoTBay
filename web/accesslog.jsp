@@ -19,6 +19,7 @@
         <title>Access Logs</title>
         <%
             User user = (User) session.getAttribute("user");
+            String backToTheFutureErr = (String) session.getAttribute("backToTheFutureErr");
             ArrayList<AccessLog> accessLogs = new ArrayList<AccessLog>();
             accessLogs = (ArrayList) session.getAttribute("accessLogs");
             Date date = new Date();
@@ -39,6 +40,9 @@
                     </div>                    
                 </div>                                                               
             </form>
+            <div class="form-group">
+                <small class="text-danger"><%=(backToTheFutureErr != null ? backToTheFutureErr : "")%></small>
+            </div>
         <table class="table table-bordered text-nowrap">
             <thead>
                 <tr>

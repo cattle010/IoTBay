@@ -24,6 +24,14 @@ import uts.isd.model.dao.UserDAO;
  */
 public class EditUserServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Validator validator = new Validator();
+        validator.clear(session);
+        request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
         HttpSession session = request.getSession();       
         Validator validator = new Validator();        
@@ -56,8 +64,7 @@ public class EditUserServlet extends HttpServlet {
                 if (!validator.validatePhoneNumber(phoneNumber)) {
                     session.setAttribute("phoneErr", "Error: Phone number format incorrect");
                     request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
-                }
-                else {
+                } else {
                     try {
                         if (user == null) {
                             userDAO.updateUser(userID, email, firstName, lastName, password, phoneNumber);
@@ -72,7 +79,7 @@ public class EditUserServlet extends HttpServlet {
                                 request.getRequestDispatcher("account.jsp").include(request, response);
                             }
                             else {
-                                session.setAttribute("emailExistErr", "Error: Email already exists in database");
+                                session.setAttribute("emailExistErr", "Error: You cannot update this email, it already exists in the database");
                                 request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
                             }
                         }                                                
@@ -81,33 +88,33 @@ public class EditUserServlet extends HttpServlet {
                         request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
                     }
                 }
-            } else {
+        } else {
                 try {
-                        if (user == null) {
+                    if (user == null) {
+                        userDAO.updateUser(userID, email, firstName, lastName, password, phoneNumber);
+                        User updatedUser = userDAO.findUser(email);
+                        session.setAttribute("user", updatedUser);
+                        request.getRequestDispatcher("account.jsp").include(request, response);
+                    } else {
+                        if (email.equals(currentUser.getUserEmail())) {
                             userDAO.updateUser(userID, email, firstName, lastName, password, phoneNumber);
                             User updatedUser = userDAO.findUser(email);
                             session.setAttribute("user", updatedUser);
                             request.getRequestDispatcher("account.jsp").include(request, response);
-                        } else {
-                            if (email.equals(currentUser.getUserEmail())) {
-                                userDAO.updateUser(userID, email, firstName, lastName, password, phoneNumber);
-                                User updatedUser = userDAO.findUser(email);
-                                session.setAttribute("user", updatedUser);
-                                request.getRequestDispatcher("account.jsp").include(request, response);
-                            }
-                            else {
-                                session.setAttribute("emailExistErr", "Error: Email already exists in database");
-                                request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
-                            }
-                        }                                                
-                    } catch (SQLException ex) {
-                        session.setAttribute("updateErr", "Error: User was not updated successfully");
-                        request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
-                    }
-                }                                        
-            } catch (SQLException ex) {
+                        }
+                        else {
+                            session.setAttribute("emailExistErr", "Error: Email already exists in database");
+                            request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
+                        }
+                    }                                                
+                } catch (SQLException ex) {
+                    session.setAttribute("updateErr", "Error: User was not updated successfully");
+                    request.getRequestDispatcher("editUserDetails.jsp").include(request, response);
+                }
+            }                                        
+        } catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }          
+        }          
     }
 }
 
