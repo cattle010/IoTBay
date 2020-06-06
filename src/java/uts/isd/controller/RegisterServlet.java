@@ -23,6 +23,15 @@ import uts.isd.model.dao.*;
  * @author jason
  */
 public class RegisterServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Validator validator = new Validator();
+        validator.clear(session);
+        request.getRequestDispatcher("register.jsp").include(request, response);
+    } 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
         HttpSession session = request.getSession();       
@@ -32,18 +41,14 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email").trim();
         String password = request.getParameter("password").trim();
         String phoneNumber = request.getParameter("phoneNumber").trim();  
-        UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
-        User user = null;
+        UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");        
         validator.clear(session);
     
         try {
-            user = userDAO.findUser(email);
+            User user = userDAO.findUser(email);
             if (user != null) {
-                session.setAttribute("existErr", "Error: This user already exists");
-                request.getRequestDispatcher("register.jsp").include(request, response);
-            } else if (!validator.checkRegisterEmpty(firstName, lastName, email, password, phoneNumber)) {           
-                session.setAttribute("emptyErr", "Error: Please fill in the required fields");
-                request.getRequestDispatcher("register.jsp").include(request, response);
+                session.setAttribute("existErr", "Error: This email already exists in the system");
+                request.getRequestDispatcher("register.jsp").include(request, response);            
             } else if (!validator.validateName(firstName)) {           
                 session.setAttribute("firstNameErr", "Error: First name format incorrect");
                 request.getRequestDispatcher("register.jsp").include(request, response);
@@ -64,23 +69,23 @@ public class RegisterServlet extends HttpServlet {
                     else {
                         try {
                             userDAO.addUser(email, firstName, lastName, password, phoneNumber);
+                            request.getRequestDispatcher("index.jsp").include(request, response);                
                         } catch (SQLException ex) {
                             session.setAttribute("addErr", "Error: User was not added to the database");
                             request.getRequestDispatcher("register.jsp").include(request, response);
-                }
-                        }                
+                        }
+                    }                
             } else {
                 try {
                     userDAO.addUser(email, firstName, lastName, password, phoneNumber);
+                    request.getRequestDispatcher("index.jsp").include(request, response);                
                 } catch (SQLException ex) {
                     session.setAttribute("addErr", "Error: User was not added to the database");
                     request.getRequestDispatcher("register.jsp").include(request, response);
-                }
-                request.getRequestDispatcher("index.jsp").include(request, response);
-                
+                }                
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }                
+        }        
     }
 }
