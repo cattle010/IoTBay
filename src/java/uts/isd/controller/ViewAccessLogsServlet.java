@@ -34,9 +34,10 @@ public class ViewAccessLogsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
         HttpSession session = request.getSession();                           
+        Validator validator = new Validator();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
-        AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");                        
-        
+        AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");                                
+        validator.clear(session);
         try {
             ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
             User currentUser = (User) session.getAttribute("user");
@@ -46,33 +47,40 @@ public class ViewAccessLogsServlet extends HttpServlet {
         } catch (NullPointerException | SQLException ex) {
             Logger.getLogger(ViewAccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }                              
-        request.getRequestDispatcher("accesslog.jsp").include(request, response);
+        request.getRequestDispatcher("accesslog.jsp").include(request, response);        
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();                           
+        HttpSession session = request.getSession(); 
+        Validator validator = new Validator();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");                                
         String startDate = request.getParameter("startDate");
-        String endDate = request.getParameter("endDate");                                        
+        String endDate = request.getParameter("endDate");  
+        validator.clear(session);
         
-        if (startDate != null & endDate != null) {
+        if (startDate != null & endDate != null) {                        
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date formattedStartDate = sdf.parse(startDate);
                 Date formattedEndDate = sdf.parse(endDate);
                 Timestamp startTimeStamp = new Timestamp(formattedStartDate.getTime());
-                Timestamp endTimeStamp = new Timestamp(formattedEndDate.getTime());
-                ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
-                User currentUser = (User) session.getAttribute("user");
-                int userID = currentUser.getUserID();              
-                retrievedLogs = accessLogDAO.fetchLogsByDate(userID, startTimeStamp, endTimeStamp);
-                session.setAttribute("accessLogs", retrievedLogs);
-            } catch (ParseException | SQLException ex) {
+                Timestamp endTimeStamp = new Timestamp(formattedEndDate.getTime());                
+                if (startTimeStamp.after(endTimeStamp)) {
+                    session.setAttribute("backToTheFutureErr", "Error: The start date cannot be after the end date");
+                    request.getRequestDispatcher("accesslog.jsp").include(request, response); 
+                } else {                    
+                    ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
+                    User currentUser = (User) session.getAttribute("user");
+                    int userID = currentUser.getUserID();              
+                    retrievedLogs = accessLogDAO.fetchLogsByDate(userID, startTimeStamp, endTimeStamp);
+                    session.setAttribute("accessLogs", retrievedLogs);
+                    request.getRequestDispatcher("accesslog.jsp").include(request, response);    
+                }                
+            } catch (ParseException | SQLException ex) {            
                 Logger.getLogger(ViewAccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            request.getRequestDispatcher("accesslog.jsp").include(request, response);            
-        }
+            }            
+        }   
     }   
 }
