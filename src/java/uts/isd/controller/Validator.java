@@ -14,28 +14,23 @@ import javax.servlet.http.HttpSession;
  * @author jason
  */
 public class Validator implements Serializable{ 
-   private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
-   //private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
-   private String namePattern = "([A-Za-z]+)";       
+   private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)"; 
+   //private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";           
+   private String namePattern = "^[a-zA-Z \\-\\.\\']*"; /* This pattern will match if the user has multiple names in a first or last name with punctuation, i.e. O'Brien */
    private String passwordPattern = "[A-Za-z0-9]{4,}";
    private String phonePattern = "([0-9]{10,})";
               
-   public Validator() {    
-       //empty
-   }       
+   public Validator() {     }       
+   
    public boolean validate(String pattern, String input){       
       Pattern regEx = Pattern.compile(pattern);       
       Matcher match = regEx.matcher(input);       
       return match.matches(); 
    }       
 
-   public boolean checkEmpty(String email, String password){       
+   public boolean checkLoginEmpty(String email, String password){       
       return  email.isEmpty() || password.isEmpty();   
-   }
-   
-   public boolean checkRegisterEmpty(String firstName, String lastName, String email, String password, String phoneNumber){       
-      return  firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || phoneNumber.isEmpty();   
-   }
+   }      
    
    public boolean validateEmail(String email){                       
       return validate(emailPattern,email);   
@@ -54,14 +49,13 @@ public class Validator implements Serializable{
    }
    
    public void clear(HttpSession session) {
-       session.setAttribute("emailErr", "Enter email...");
-       session.setAttribute("passErr", "Enter password...");
-       session.setAttribute("firstNameErr", "Enter first name...");
-       session.setAttribute("lastNameErr", "Enter last name...");              
-       session.setAttribute("phoneErr", "Please enter phone number...");
-       session.setAttribute("emptyErr", "Please fill in the required fields");
+       session.setAttribute("emailErr", "");
+       session.setAttribute("firstNameErr", "");
+       session.setAttribute("lastNameErr", "");  
+       session.setAttribute("passErr", "");                          
+       session.setAttribute("phoneErr", "");
+       session.setAttribute("existErr", "");       
        session.setAttribute("addErr", "");
-       session.setAttribute("updateErr", "");
-       session.setAttribute("existErr", "");
+       session.setAttribute("updateErr", "");       
    }
 }

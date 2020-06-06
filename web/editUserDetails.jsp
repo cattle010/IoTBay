@@ -14,7 +14,7 @@
         <title>Edit User Details</title>        
         <%
             User user = (User) session.getAttribute("user");
-        %>
+        %>        
     </head>
     <body>
         <div class="container">
@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <th>Password</th>
-                            <td><input class="form-control" type="password" name="password" value="${user.password}" required></td>
+                            <td><input class="form-control" type="text" name="password" value="${user.password}" required></td>                            
                         </tr>
                         <tr>
                             <th>Phone Number</th>                            

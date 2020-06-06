@@ -27,7 +27,7 @@
                 <p>Hello there ${user.userEmail}</p>
             <% } else { %>
                 <nav class="nav justify-content-center">
-                    <a class="nav-link nav-item active" href="register.jsp">Register</a>
+                    <a class="nav-link nav-item active" href="RegisterServlet">Register</a>
                     <a class="nav-link nav-item active" href="login.jsp">Login</a>
                 </nav>
             <% } %>
