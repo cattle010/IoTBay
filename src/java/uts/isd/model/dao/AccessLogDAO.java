@@ -66,7 +66,7 @@ public class AccessLogDAO {
     //FIND BY DATE AccessLog Operation
     public ArrayList<AccessLog> fetchLogsByDate(int id, Timestamp start, Timestamp end) throws SQLException {
         ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();
-        String query = "SELECT * FROM iotbayadmin.ACCESSLOG_T WHERE UserId = ? AND EventLogTime >= ? AND EventLogTime <= ?";
+        String query = "SELECT * FROM iotbayadmin.ACCESSLOG_T WHERE UserId = ? AND LogEventTime >= ? AND LogEventTime <= ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setInt(1, id);
         pstmt.setTimestamp(2, start);
@@ -79,8 +79,7 @@ public class AccessLogDAO {
             Timestamp time = rs.getTimestamp(3);
             String event = rs.getString(4);
             retrievedLogs.add(new AccessLog(accessLogID, userID, time, event));
-        }
-        
+        }        
         return retrievedLogs;
     }
 }

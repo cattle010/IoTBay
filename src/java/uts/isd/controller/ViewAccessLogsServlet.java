@@ -8,7 +8,11 @@ package uts.isd.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -32,8 +36,9 @@ public class ViewAccessLogsServlet extends HttpServlet {
         HttpSession session = request.getSession();                           
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");                        
-        ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
+        
         try {
+            ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
             User currentUser = (User) session.getAttribute("user");
             int userID = currentUser.getUserID();              
             retrievedLogs = accessLogDAO.fetchAllLogs(userID);
@@ -43,4 +48,31 @@ public class ViewAccessLogsServlet extends HttpServlet {
         }                              
         request.getRequestDispatcher("accesslog.jsp").include(request, response);
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();                           
+        UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+        AccessLogDAO accessLogDAO = (AccessLogDAO) session.getAttribute("accessLogDAO");                                
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");                                        
+        
+        if (startDate != null & endDate != null) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date formattedStartDate = sdf.parse(startDate);
+                Date formattedEndDate = sdf.parse(endDate);
+                Timestamp startTimeStamp = new Timestamp(formattedStartDate.getTime());
+                Timestamp endTimeStamp = new Timestamp(formattedEndDate.getTime());
+                ArrayList<AccessLog> retrievedLogs = new ArrayList<AccessLog>();        
+                User currentUser = (User) session.getAttribute("user");
+                int userID = currentUser.getUserID();              
+                retrievedLogs = accessLogDAO.fetchLogsByDate(userID, startTimeStamp, endTimeStamp);
+                session.setAttribute("accessLogs", retrievedLogs);
+            } catch (ParseException | SQLException ex) {
+                Logger.getLogger(ViewAccessLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.getRequestDispatcher("accesslog.jsp").include(request, response);            
+        }
+    }   
 }

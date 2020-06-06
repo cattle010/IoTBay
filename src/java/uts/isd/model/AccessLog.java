@@ -6,6 +6,8 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -57,7 +59,7 @@ public class AccessLog implements Serializable {
     public String getPrettyLogEventTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
         return sdf.format(logEventTime);
-    }
+    }       
 
     public String getLogEvent() {
         return logEvent;
