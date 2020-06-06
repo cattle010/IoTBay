@@ -28,7 +28,7 @@
             <% } else { %>
                 <nav class="nav justify-content-center">
                     <a class="nav-link nav-item active" href="RegisterServlet">Register</a>
-                    <a class="nav-link nav-item active" href="login.jsp">Login</a>
+                    <a class="nav-link nav-item active" href="LoginServlet">Login</a>
                 </nav>
             <% } %>
         </div>

@@ -26,6 +26,14 @@ import uts.isd.model.dao.*;
  */
 public class LoginServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Validator validator = new Validator();
+        validator.clear(session);
+        request.getRequestDispatcher("login.jsp").include(request, response);
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
@@ -56,10 +64,13 @@ public class LoginServlet extends HttpServlet {
                 } catch (SQLException ex) {
                     Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }            
-            request.getRequestDispatcher("index.jsp").include(request, response);
+                request.getRequestDispatcher("index.jsp").include(request, response);
+            } else {
+                session.setAttribute("loginErr", "Error: The user cannot be found in the database, please check your login details again");
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }                        
         } else {                       
-            session.setAttribute("existErr", "User does not exist in the database");
+            session.setAttribute("existErr", "Error: The user does not exist in the database");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }   
     }

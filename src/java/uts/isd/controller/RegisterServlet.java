@@ -73,8 +73,8 @@ public class RegisterServlet extends HttpServlet {
                         } catch (SQLException ex) {
                             session.setAttribute("addErr", "Error: User was not added to the database");
                             request.getRequestDispatcher("register.jsp").include(request, response);
-                }
-                        }                
+                        }
+                    }                
             } else {
                 try {
                     userDAO.addUser(email, firstName, lastName, password, phoneNumber);
