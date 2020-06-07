@@ -82,4 +82,23 @@ public class AccessLogDAO {
         }        
         return retrievedLogs;
     }
+    
+    //READ the first AccessLog of a User Operation
+    public AccessLog fetchFirstLog(int id) throws SQLException {        
+        String query = "SELECT * FROM iotbayadmin.ACCESSLOG_T WHERE UserId = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();        
+        
+        if (rs.next()) {
+            int accessLogID = rs.getInt(1);
+            int userID = rs.getInt(2);
+            Timestamp time = rs.getTimestamp(3);
+            String event = rs.getString(4);
+            pstmt.close();
+            return (new AccessLog(accessLogID, userID, time, event));          
+        }
+        pstmt.close();
+        return null;        
+    }
 }

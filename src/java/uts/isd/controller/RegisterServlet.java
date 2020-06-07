@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
                     else {
                         try {
                             userDAO.addUser(email, firstName, lastName, password, phoneNumber);
-                            request.getRequestDispatcher("index.jsp").include(request, response);                
+                            request.getRequestDispatcher("registerSuccess.jsp").include(request, response);                
                         } catch (SQLException ex) {
                             session.setAttribute("addErr", "Error: User was not added to the database");
                             request.getRequestDispatcher("register.jsp").include(request, response);
@@ -78,7 +78,7 @@ public class RegisterServlet extends HttpServlet {
             } else {
                 try {
                     userDAO.addUser(email, firstName, lastName, password, phoneNumber);
-                    request.getRequestDispatcher("index.jsp").include(request, response);                
+                    request.getRequestDispatcher("registerSuccess.jsp").include(request, response);                
                 } catch (SQLException ex) {
                     session.setAttribute("addErr", "Error: User was not added to the database");
                     request.getRequestDispatcher("register.jsp").include(request, response);
