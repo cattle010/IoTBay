@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-<<<<<<< HEAD
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>uts.isd.controller.ConnServlet</servlet-class>
     </servlet>
@@ -29,37 +28,7 @@
         <servlet-name>ViewAccessLogsServlet</servlet-name>
         <servlet-class>uts.isd.controller.ViewAccessLogsServlet</servlet-class>
     </servlet>
-    <servlet>
-=======
->>>>>>> master
-        <servlet-name>ViewServlet</servlet-name>
-        <servlet-class>controller.ViewServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>controller.ConnServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddServlet</servlet-name>
-        <servlet-class>controller.AddServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>controller.DeleteServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditServlet</servlet-name>
-        <servlet-class>controller.EditServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReadServlet</servlet-name>
-        <servlet-class>controller.ReadServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>controller.UpdateServlet</servlet-class>
-<<<<<<< HEAD
-    </servlet>    <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
     </servlet-mapping>
@@ -86,37 +55,6 @@
     <servlet-mapping>
         <servlet-name>ViewAccessLogsServlet</servlet-name>
         <url-pattern>/ViewAccessLogsServlet</url-pattern>
-    </servlet-mapping>
-=======
-    </servlet>
->>>>>>> master
-    <servlet-mapping>
-        <servlet-name>ViewServlet</servlet-name>
-        <url-pattern>/ViewServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ConnServlet</servlet-name>
-        <url-pattern>/ConnServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddServlet</servlet-name>
-        <url-pattern>/AddServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/DeleteServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditServlet</servlet-name>
-        <url-pattern>/EditServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReadServlet</servlet-name>
-        <url-pattern>/ReadServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateServlet</servlet-name>
-        <url-pattern>/UpdateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
