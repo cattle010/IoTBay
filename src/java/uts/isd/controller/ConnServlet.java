@@ -32,6 +32,7 @@ public class ConnServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private DBConnector db;
+    private DBManager manager;
     private UserDAO userDAO;
     private AccessLogDAO accessLogDAO;
     private Connection conn;
@@ -55,12 +56,14 @@ public class ConnServlet extends HttpServlet {
             userDAO = new UserDAO(conn);
             paymentDAO = new PaymentDAO(conn);
             accessLogDAO = new AccessLogDAO(conn);
+            manager = new DBManager(conn);
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("userDAO", userDAO);           
         session.setAttribute("accessLogDAO", accessLogDAO);
+        session.setAttribute("manager", manager);
         session.setAttribute("paymentDAO", paymentDAO);
     }
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
