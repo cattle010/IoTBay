@@ -20,9 +20,9 @@
         <div class="container">
             <h1 class="text-center">IoTBay</h1>            
             <nav class="nav justify-content-center">
+                <a class="nav-link nav-item active" href="index.jsp">Home</a>
                 <a class="nav-link nav-item active" href="account.jsp">Account</a>                    
                 <a class="nav-link nav-item active" href="logout.jsp">Logout</a>
-                <a class="nav-link nav-item active" href="index.jsp">Logout</a>
             </nav>
             <div class="row">
                 <div class="container">
