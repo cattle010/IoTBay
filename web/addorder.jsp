@@ -6,7 +6,6 @@
 --%>
 
 <%@page import="uts.isd.model.Order"%>
-<%@page import="java.time.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,41 +27,41 @@
                 <h1>Add New Order </h1>
                 <span><%= ( creationconf != null) ? "Added Order successfully":""%></span>
                 <form>
-                    <div>
+                    <div class="form-group col">
                         <label>Current Date: <script>document.getElementById("date").innerHTML = Date();</script></label>
                     </div>
-                    <div>
+                    <div class="form-group col">
                         <label for="orderid">Order ID</label> 
                         <small class="text-danger"><%=(orderErr != null ? orderErr : "")%></small>
                         <input name="orderid" type="text" class="form-control" placeholder="Enter order id...">
                     </div>
-                    <div>
+                    <div class="form-group col">
                         <label for="userid">User ID</label> 
                         <input name="userid" type="text" class="form-control" placeholder="Enter user id...">
                     </div>
-                    <div>
+                    <div class="form-group col">
                         <label for="paymentid">Payment ID</label> 
                         <small class="text-danger"><%=(paymentErr != null ? shippingaddErr : "")%></small>
                         <input name="paymentid" type="text" class="form-control" placeholder="Enter payment id...">
                     </div>
-                    <div>
+                    <div class="form-group col">
                         <label for="shipaddid">Shipping Address ID</label>
                         <small class="text-danger"><%=(shippingaddErr != null ? shippingaddErr : "")%></small>
                         <input name="shipaddid" type="text" class="form-control" placeholder="Enter shipping address id...">
                     </div>
-                    <div>
+                    <div class="form-group col">
                         <a href="addedorder.jsp" type="button" class="btn btn-secondary btn-lg">Add to your order</a>
                         <a href="account.jsp" type="button" class="btn btn-secondary btn-lg">Go back to your account</a>
                     </div>
                 </form>
-                
                 <%
-                    int orderid = Integer.parseInt(request.getParameter("orderid"));
-                    int userid = Integer.parseInt(request.getParameter("userid"));
-                    int paymentid = Integer.parseInt(request.getParameter("paymentid"));
-                    int shippingaddressid = Integer.parseInt(request.getParameter("shippingaddressid"));
-                    order = new Order(orderid, userid, paymentid, shippingaddressid, null, null, "in-progress");
+                    int orderID = Integer.parseInt(request.getParameter("orderid"));
+                    int userID = Integer.parseInt(request.getParameter("userid"));
+                    int paymentID = Integer.parseInt(request.getParameter("paymentid"));
+                    int shippingAddressID = Integer.parseInt(request.getParameter("shippingaddressid"));
+                    order = new Order(orderID, userID, paymentID, shippingAddressID, null, null, "in-progress");
                  %>
+                
         </div>
     </body>
 </html>

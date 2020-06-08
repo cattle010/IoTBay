@@ -19,7 +19,7 @@
     <body>
         <h1>Remove an Order</h1>
         <p> <a href="CustomerOrder.jsp" type="button" class="btn btn-secondary btn-lg btn-block">View Orders</a> </p>
-        <div>
+        <div class="form-group col">
      
                 <form method="get">
                     
@@ -36,11 +36,11 @@
                     </div>
                 </form>
         </div>
-                        <%
+             <%
                     int orderid = Integer.parseInt(request.getParameter("orderid"));
                     int userid = Integer.parseInt(request.getParameter("userid"));
                     int paymentid = Integer.parseInt(request.getParameter("paymentid"));
-                    int shippingaddressid = Integer.parseInt(request.getParameter("shippingaddressid"));
+                    int shippingaddressid = Integer.getInteger(request.getParameter("shippingaddressid"));
                     session.setAttribute("order", order);
                     order = new Order(orderid, userid, paymentid, shippingaddressid, null, null, null);
                  %>
