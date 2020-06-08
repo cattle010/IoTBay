@@ -1,30 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uts.isd.model.dao;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import uts.isd.model.Order;
 
 /**
  *
  * @author Kelvin Wang
  */
-import uts.isd.model.Order;
-import java.util.ArrayList;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import uts.isd.model.Order;
-/**
- *
- * @author apple
- */
-public class OrderDBManager {
+public class OrderDAO {
 
     public static Order findOrder(String orderID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -33,7 +22,7 @@ public class OrderDBManager {
     private final Statement st;
     private final Connection conn;
     
-    public OrderDBManager(Connection conn) throws SQLException {
+    public OrderDAO(Connection conn) throws SQLException {
         st = conn.createStatement();
         this.conn = conn;
     }
@@ -57,7 +46,7 @@ public class OrderDBManager {
    return null;   
 }
 
-//Add a user-data into the database   
+//Add an order to the database  
 public void addOrder(int orderID,int userID,int paymentID,int shippingAddressID,Date orderDate,Date shipDate,String orderStatus) throws SQLException {                   //code for add-operation       
   st.executeUpdate("sql query");   
   String query = "INSERT INTO iotbayadmin.ORDER_T(orderID, userID, paymentID, shippingAddressID, orderDate, shipDate, orderStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -72,7 +61,7 @@ public void addOrder(int orderID,int userID,int paymentID,int shippingAddressID,
             pst.executeUpdate();
             pst.close();
         } catch (SQLException ex) {
-            Logger.getLogger(OrderDBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
  
@@ -99,4 +88,4 @@ public void deleteOrder(int orderID) throws SQLException{
             pst.close();
         }
 }
-}
+} 

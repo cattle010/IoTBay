@@ -14,30 +14,44 @@
         <title>Update Order</title>
     </head>
     <%
-            Order order = (Order) session.getAttribute("show");
-    %>
-    <body>
-        <div class="maincolumn2">
-        <div class="card">
-
-            </head>
-            <body>
-
+            Order order = (Order) session.getAttribute("order");
+            String orderErr = (String) session.getAttribute("orderErr");
+            String paymentErr = (String) session.getAttribute("paymentErr");
+            String shippingaddErr = (String) session.getAttribute("shippingaddErr");
+            String updated = (String) request.getParameter("updated");
+    %>        
                 <h1>Update an order here:</h1>
-
-                <form method="get" action="UpdateSupplierServlet">
-                    <table>
-                        <tr>
-                            <td><input type="text" placeholder="enter order id" name="orderid"></td>
-                        </tr>
-                    </table>
+                <span><%= ( updated != null) ? "Updated successfully":""%></span>
+                <form method="get">
                     <div>
-                        <input class ="button4" type="submit" value="Search">
-                        <a class ="button3" href="customerorder.jsp">Cancel</a>
+                        <label>Want to change an order? Enter Order ID:</label> 
+                        <input name="orderid" type="text" class="form-control" placeholder="Enter order id...">
+                    </div>
+                    <div>
+                        <label for="userid">User ID</label> 
+                        <input name="userid" type="text" class="form-control" placeholder="Enter user id...">
+                    </div>
+                    <div>
+                        <label for="paymentid">Payment ID</label> 
+                        <small class="text-danger"><%=(paymentErr != null ? shippingaddErr : "")%></small>
+                        <input name="paymentid" type="text" class="form-control" placeholder="Enter payment id...">
+                    </div>
+                    <div>
+                        <label for="shipaddid">Shipping Address ID</label>
+                        <small class="text-danger"><%=(shippingaddErr != null ? shippingaddErr : "")%></small>
+                        <input name="shipaddid" type="text" class="form-control" placeholder="Enter shipping address id...">
+                    </div>
+                    <div>
+                        <input type="submit" value="Update">
+                        <a href="CustomerOrder.jsp" type="button" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
-            </body>
-        </div>
-    </div>
-    </body>
+                        <%
+                    int orderid = Integer.parseInt(request.getParameter("orderid"));
+                    int userid = Integer.parseInt(request.getParameter("userid"));
+                    int paymentid = Integer.parseInt(request.getParameter("paymentid"));
+                    int shippingaddressid = Integer.parseInt(request.getParameter("shippingaddressid")); 
+                    session.setAttribute("order", order);
+                    order = new Order(orderid, userid, paymentid, shippingaddressid, null, null, "in-progress");
+                 %>
 </html>

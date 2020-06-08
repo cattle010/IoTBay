@@ -15,13 +15,12 @@
    import javax.servlet.http.HttpServletRequest;
    import javax.servlet.http.HttpServletResponse;
    import javax.servlet.http.HttpSession;
-import uts.isd.model.Order;
    import uts.isd.model.dao.*;
 
    public class OrderServlet extends HttpServlet {
-       private OrderDBConnector db;
+       private DBConnector db;
 
-       private OrderDBManager manager;
+       private OrderDAO manager;
 
        private Connection conn;
        @Override
@@ -30,7 +29,7 @@ import uts.isd.model.Order;
 
            try {
 
-               db = new OrderDBConnector();
+               db = new DBConnector();
 
            } catch (ClassNotFoundException | SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,7 +42,7 @@ import uts.isd.model.Order;
            HttpSession session = request.getSession();
            conn = db.openConnection();       
            try {
-               manager = new OrderDBManager(conn);
+               manager = new OrderDAO(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
            }

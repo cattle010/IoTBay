@@ -14,28 +14,35 @@
         <title>Remove Order</title>
     </head>
     <%
-            Order order = (Order) session.getAttribute("show");
+            Order order = (Order) session.getAttribute("order");
     %>
     <body>
         <h1>Remove an Order</h1>
-        <p class="right"> <a class="button21" href="customerorders.jsp">View Orders</a> </p>
-        <div class="maincolumn2">
-            <div class="card">
+        <p> <a href="CustomerOrder.jsp" type="button" class="btn btn-secondary btn-lg btn-block">View Orders</a> </p>
+        <div>
      
                 <form method="get">
                     
                   <table>
                          <tr>
-                            <td>OrderID</td>
-                            <td><input type="text" value="${order.orderID}" name="orderID"></td>
+                            <td>Order ID</td>
+                            <td><input type="text" name="orderID"></td>
                         </tr>
                     </table>
                        
                     <div>
-                        <input class ="button4" type="submit" value="Delete">
+                        <input type="submit" value="Delete">
+                        <a href="CustomerOrder.jsp" type="button" class="btn btn-secondary btn-lg btn-block">Back</a>
                     </div>
                 </form>
-            </div>
         </div>
+                        <%
+                    int orderid = Integer.parseInt(request.getParameter("orderid"));
+                    int userid = Integer.parseInt(request.getParameter("userid"));
+                    int paymentid = Integer.parseInt(request.getParameter("paymentid"));
+                    int shippingaddressid = Integer.parseInt(request.getParameter("shippingaddressid"));
+                    session.setAttribute("order", order);
+                    order = new Order(orderid, userid, paymentid, shippingaddressid, null, null, null);
+                 %>
     </body>
 </html>
