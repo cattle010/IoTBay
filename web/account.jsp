@@ -71,26 +71,23 @@
                 
                     <% if (user.getUserID() != 1) { %>
                     <div class="sidebar-expanded col-2 d-none d-md-block">                    
-                    <nav class="list-group sticky-top sticky-offset">
-                    <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
-                    <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
-                    </nav>                    
-                </div>
-                        <% } else { %>
-                            <div class="sidebar-expanded col-2 d-none d-md-block">                    
-                    <nav class="list-group sticky-top sticky-offset">
-                        <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
-                        <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
-                        
-                        <a class="nav-link nav-item active" href="ListUserServlet">User Management</a>
-                    </nav>                    
-                </div>
+                        <nav class="list-group sticky-top sticky-offset">
+                            <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
+                            <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
+                            <a class="nav-link nav-item active" href="OrderServlet">Order Details</a>
+                        </nav>                    
+                    </div>
+                    <% } else { %>
+                    <div class="sidebar-expanded col-2 d-none d-md-block">                    
+                        <nav class="list-group sticky-top sticky-offset">
+                            <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
+                            <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>                        
+                                <a class="nav-link nav-item active" href="ListUserServlet">User Management</a>
+                        </nav>                    
+                    </div>
                         <% } %>
             </div>
         </div>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <div class="form-group">
-                <a class="form-text text-muted" href="OrderServlet">Check out your order details here!</a>
-        </div>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>        
     </body>
 </html>
