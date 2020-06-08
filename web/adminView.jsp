@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <title>Account</title>
         <%
-            User user = (User) session.getAttribute("user");
+            User adminUser = (User) request.getAttribute("editUser");
         %>    
     </head>
     <body>
@@ -24,10 +24,6 @@
                 <a class="nav-link nav-item active" href="logout.jsp">Logout</a>
             </nav>
             <div class="row">
-                <div class="container">
-                    <h2>Hi there ${user.userFirstName},</h2>
-                    <p>Welcome to your account page, here you can view and edit your settings as well as check out your access logs through the links on the menu below.</p>
-                </div>
                     <div class="container">
                         <h4>Account Details</h4>
                     </div>
@@ -37,55 +33,36 @@
                             <tbody>
                                 <tr>
                                     <th class="">Email</th>
-                                    <td>${user.userEmail}</td>
+                                    <td><%=adminUser.getUserEmail()%></td>
                                 </tr>
                                 <tr>
                                     <th class="">First Name</th>
-                                    <td>${user.userFirstName}</td>
+                                    <td><%=adminUser.getUserFirstName()%></td>
                                 </tr>
                                 <tr>
                                     <th class="">Last Name</th>
-                                    <td>${user.userLastName}</td>
+                                    <td><%=adminUser.getUserLastName()%></td>
                                 </tr>
                                 <tr>
                                     <th class="">Password</th>
-                                    <td>${user.password}</td>
+                                    <td><%=adminUser.getPassword()%></td>
                                 </tr>
                                 <tr>
                                     <th class="">Phone Number</th>
-                                    <% if (user.getPhoneNumber().isEmpty()) { %>
-                                       <td>You have not entered a phone number</td>
+                                    <% if (adminUser.getPhoneNumber().isEmpty()) { %>
+                                       <td>User have not entered a phone number</td>
                                     <% } else { %>
-                                       <td>${user.phoneNumber}</td>
+                                       <td><%=adminUser.getPhoneNumber()%></td>
                                     <% } %>
                                 </tr>
                             </tbody>                                                        
                         </table>
                         <div class="text-right">
-                            <a href="deleteUser.jsp"><button type="button" class="btn btn-danger">Delete Account</button></a>
+                            <a href="ListUserServlet"><button type="button" class="btn btn-danger">Back</button></a>
                         </div>
                     </div>
                 </div>
                 
-                                
-                
-                    <% if (user.getUserID() != 1) { %>
-                    <div class="sidebar-expanded col-2 d-none d-md-block">                    
-                    <nav class="list-group sticky-top sticky-offset">
-                    <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
-                    <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
-                    </nav>                    
-                </div>
-                        <% } else { %>
-                            <div class="sidebar-expanded col-2 d-none d-md-block">                    
-                    <nav class="list-group sticky-top sticky-offset">
-                        <a class="nav-link nav-item active" href="EditUserServlet">Edit Details</a>
-                        <a class="nav-link nav-item active" href="ViewAccessLogsServlet">Access Logs</a>
-                        
-                        <a class="nav-link nav-item active" href="ListUserServlet">User Management</a>
-                    </nav>                    
-                </div>
-                        <% } %>
             </div>
         </div>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
