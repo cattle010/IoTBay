@@ -6,7 +6,6 @@
 package uts.isd.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -23,25 +22,18 @@ public class Payment implements Serializable {
     private String paymentMethod;
     private String cardFName;
     private String cardLName;
-    private long cardNumber;
+    private int cardNumber;
     private Date cardValid;
     private Date cardExpire;
     private int cardSecurityNum;
     
 
-    public Payment(int paymentID, String paymentName, String paymentStatus, double paymentAmount, Date paymentDate, String paymentMethod, String cardFName, String cardLName,long cardNumber, Date cardValid, Date cardExpire, int cardSecurityNum) {
+    public Payment(int paymentID, String paymentName, String paymentStatus, double paymentAmount, Date paymentDate, String paymentMethod, String cardFName, String cardLName,int cardNumber, Date cardValid, Date cardExpire, int cardSecurityNum) {
         this.paymentID = paymentID;
         this.paymentName = paymentName;
         this.paymentStatus = paymentStatus;
         this.paymentAmount = paymentAmount;
         this.paymentDate = paymentDate;
-        this.paymentMethod = paymentMethod;
-        this.cardFName = cardFName;
-        this.cardLName = cardLName;
-        this.cardNumber = cardNumber;
-        this.cardValid = cardValid;
-        this.cardExpire = cardExpire;
-        this.cardSecurityNum = cardSecurityNum;
     }
 
     public int getPaymentID() {
@@ -108,11 +100,11 @@ public class Payment implements Serializable {
         this.cardLName = cardLName;
     }
 
-    public long getCardNumber() {
+    public int getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(long cardNumber) {
+    public void setCardNumber(int cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -139,5 +131,7 @@ public class Payment implements Serializable {
     public void setCardSecurityNum(int cardSecurityNum) {
         this.cardSecurityNum = cardSecurityNum;
     }
+    
+    
 }
 
