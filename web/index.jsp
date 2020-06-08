@@ -23,6 +23,7 @@
                 <nav class="nav justify-content-center">
                     <a class="nav-link nav-item active" href="account.jsp">Account</a>                    
                     <a class="nav-link nav-item active" href="logout.jsp">Logout</a>
+                    <a class="nav-link nav-item active" href="DirectToProductServlet?isStaff=${user.isStaffUser}&isRegisteredUser=${user.isRegisteredUser}">View all products</a>
                 </nav>
                 <p>Hello there ${user.userEmail}</p>
             <% } else { %>
