@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <title>Added Order Page</title>
     </head>
     <body>
-        <h1>your Order has been successfully added</h1>
-        <a href="CustomerOrder.jsp" type="button" class="btn btn-secondary">View your orders</a>
-        <a href="index.jsp" type="button" class="btn btn-secondary">Back</a>
+        <h1>Your order has been successfully added</h1>
+        <a href="CustomerOrder.jsp" type="button" class="btn btn-lg btn-block btn-secondary">View your orders</a>
+        <a href="account.jsp" type="button" class="btn btn-lg btn-block btn-secondary">Back</a>
     </body>
 </html>

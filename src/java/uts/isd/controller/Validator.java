@@ -46,8 +46,7 @@ public class Validator implements Serializable{
    
    public boolean validatePhoneNumber(String phoneNumber) {
        return validate(phonePattern, phoneNumber);
-   }
-   
+   } 
    public void clear(HttpSession session) {
        session.setAttribute("emailErr", "");
        session.setAttribute("firstNameErr", "");

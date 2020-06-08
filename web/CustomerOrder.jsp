@@ -52,8 +52,8 @@
         </form>
                 </br>
                 </br>
-        <div>
-        <a href="index.jsp" type="button" class="btn btn-lg btn-block">Back</a>
+        <div class="form-group col">
+        <a href="index.jsp" type="button" class="btn btn-lg btn-secondary btn-block">Back</a>
         </div>
     </body>
 </html>
