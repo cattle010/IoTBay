@@ -28,21 +28,20 @@ public class PaymentDAO {
     }
     
     //Create Payment
-    public void addPayment(int PaymentID, String PaymentName, String PaymentStatus, double PaymentAmount, Date PaymentDate, String PaymentMethod, String CardFName, String CardLName, long CardNumber, Date CardValid, Date CardExpire, int CardSecurityNum) throws SQLException {
-        String query = "INSERT INTO iotbayadmin.ACCESSLOG_T(PaymentID, PaymentName, PaymentStatus, PaymentAmount, PaymentDate, PaymentMethod, CardFName, CardLName, CardNumber, CardValid, CardExpire, CardSecurityNum) VALUES (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
+    public void addPayment(String PaymentName, String PaymentStatus, double PaymentAmount, Date PaymentDate, String PaymentMethod, String CardFName, String CardLName, long CardNumber, Date CardValid, Date CardExpire, int CardSecurityNum) throws SQLException {
+        String query = "INSERT INTO iotbayadmin.PAYMENT_T(PaymentName, PaymentStatus, PaymentAmount, PaymentDate, PaymentMethod, CardFName, CardLName, CardNumber, CardValid, CardExpire, CardSecurityNum) VALUES (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setInt(1, PaymentID);
-        pstmt.setString(2, PaymentName);
-        pstmt.setString(3, PaymentStatus);
-        pstmt.setDouble(4, PaymentAmount);
-        pstmt.setDate(5, (java.sql.Date) PaymentDate);
-        pstmt.setString(6, PaymentMethod);
-        pstmt.setString(7, CardFName);
-        pstmt.setString(8, CardLName);
-        pstmt.setLong(9, CardNumber);
-        pstmt.setDate(10, (java.sql.Date) CardValid);
-        pstmt.setDate(11, (java.sql.Date) CardExpire);
-        pstmt.setInt(12, CardSecurityNum);
+        pstmt.setString(1, PaymentName);
+        pstmt.setString(2, PaymentStatus);
+        pstmt.setDouble(3, PaymentAmount);
+        pstmt.setDate(4, (java.sql.Date) PaymentDate);
+        pstmt.setString(5, PaymentMethod);
+        pstmt.setString(6, CardFName);
+        pstmt.setString(7, CardLName);
+        pstmt.setLong(8, CardNumber);
+        pstmt.setDate(9, (java.sql.Date) CardValid);
+        pstmt.setDate(10, (java.sql.Date) CardExpire);
+        pstmt.setInt(11, CardSecurityNum);
         pstmt.executeUpdate();
         pstmt.close();
     }

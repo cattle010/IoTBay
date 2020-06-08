@@ -53,7 +53,7 @@ CREATE TABLE PAYMENT_T (
     PaymentMethod VARCHAR(50) NOT NULL,
     CardFName VARCHAR(50) NOT NULL,
     CardLName VARCHAR(50) NOT NULL,
-    CardNumber INTEGER NOT NULL,
+    CardNumber BIGINT NOT NULL,
     CardValid TIMESTAMP NOT NULL,
     CardExpire TIMESTAMP NOT NULL,
     CardSecurityNum INTEGER NOT NULL,
