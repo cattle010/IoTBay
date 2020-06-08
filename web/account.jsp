@@ -89,5 +89,8 @@
             </div>
         </div>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <div class="form-group">
+                <a class="form-text text-muted" href="OrderServlet">Check out your order details here!</a>
+        </div>
     </body>
 </html>
