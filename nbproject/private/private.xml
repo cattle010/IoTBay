@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jason/Projects/IoTBay/web/register.jsp</file>
-            <file>file:/Users/jason/Projects/IoTBay/src/java/uts/isd/model/dao/UserDAO.java</file>
-            <file>file:/Users/jason/Projects/IoTBay/web/account.jsp</file>
-            <file>file:/Users/jason/Projects/IoTBay/web/accesslog.jsp</file>
-            <file>file:/Users/jason/Projects/IoTBay/src/java/uts/isd/controller/EditUserServlet.java</file>
-            <file>file:/Users/jason/Projects/IoTBay/src/java/uts/isd/model/User.java</file>
-            <file>file:/Users/jason/Projects/IoTBay/web/editUserDetails.jsp</file>
-            <file>file:/Users/jason/Projects/IoTBay/src/java/uts/isd/model/dao/AccessLogDAO.java</file>
-            <file>file:/Users/jason/Projects/IoTBay/src/java/uts/isd/model/AccessLog.java</file>
-            <file>file:/Users/jason/Projects/IoTBay/web/db/create.sql</file>
+            <file>file:/C:/Users/Kelvin%20Wang/Documents/NetBeansProjects/IoTBay/src/java/uts/isd/model/dao/OrderDAO.java</file>
+            <file>file:/C:/Users/Kelvin%20Wang/Documents/NetBeansProjects/IoTBay/src/java/uts/isd/controller/ConnServlet.java</file>
+            <file>file:/C:/Users/Kelvin%20Wang/Documents/NetBeansProjects/IoTBay/src/java/uts/isd/model/Product.java</file>
+            <file>file:/C:/Users/Kelvin%20Wang/Documents/NetBeansProjects/IoTBay/src/java/uts/isd/model/Order.java</file>
+            <file>file:/C:/Users/Kelvin%20Wang/Documents/NetBeansProjects/IoTBay/web/CustomerOrder.jsp</file>
         </group>
     </open-files>
 </project-private>
