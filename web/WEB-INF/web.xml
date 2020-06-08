@@ -51,6 +51,8 @@
     <servlet>
         <servlet-name>DirectToProductServlet</servlet-name>
         <servlet-class>uts.isd.controller.DirectToProductServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>NewPaymentServlet</servlet-name>
         <servlet-class>uts.isd.controller.NewPaymentServlet</servlet-class>
     </servlet>
@@ -109,6 +111,8 @@
     <servlet-mapping>
         <servlet-name>DirectToProductServlet</servlet-name>
         <url-pattern>/DirectToProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>NewPaymentServlet</servlet-name>
         <url-pattern>/NewPaymentServlet</url-pattern>
     </servlet-mapping>
