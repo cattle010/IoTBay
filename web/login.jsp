@@ -27,17 +27,18 @@
         <small class="text-danger"><%=(loginErr != null ? loginErr : "")%></small>
         <form method="post" action="LoginServlet">
             <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="email">Email Address<span class="text-danger"> *</span></label>
                 <small class="text-danger"><%=(emailErr != null ? emailErr : "")%></small>
                 <input name="email" type="email" class="form-control" placeholder="Enter email..." required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password<span class="text-danger"> *</span></label>
                 <small class="text-danger"><%=(passErr != null ? passErr : "")%></small>
                 <input name="password" type="password" placeholder="Enter password..." class="form-control" required>
             </div>
             <div class="form-group">
-                <a class="form-text text-muted" href="register.jsp">Haven't made an account yet? Register here!</a>
+                <a class="form-text text-info" href="register.jsp">Haven't made an account yet? Register here!</a>
+                <p class="text-danger">* Required</p>
             </div>
             <div class="form-row">
                 <div class="form-group col">

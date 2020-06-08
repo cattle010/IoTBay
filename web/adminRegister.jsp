@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : 30/05/2020, 1:43:02 AM
-    Author     : jason
+    Author     : xun.s.chang
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,7 +27,7 @@
             <h1>Register</h1>
             <p class="text-danger"><%=(existErr != null ? existErr : "")%></p>            
             <p class="text-danger"><%=(addErr != null ? addErr : "")%></p>            
-            <form method="post" action="RegisterServlet">
+            <form method="post" action="adminRegisterServlet">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="firstName">First Name<span class="text-danger"> *</span></label>

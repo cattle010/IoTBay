@@ -19,7 +19,10 @@
         <title>Access Logs</title>
         <%
             User user = (User) session.getAttribute("user");
-            String backToTheFutureErr = (String) session.getAttribute("backToTheFutureErr");
+            String timeFilterErr = (String) session.getAttribute("timeFilterErr");            
+            String dateParseError = (String) session.getAttribute("dateParseError"); 
+            String filterErr = (String) session.getAttribute("filterErr");
+            String filterText = (String) session.getAttribute("filterText");
             ArrayList<AccessLog> accessLogs = new ArrayList<AccessLog>();
             accessLogs = (ArrayList) session.getAttribute("accessLogs");
             Date date = new Date();
@@ -41,7 +44,10 @@
                 </div>                                                               
             </form>
             <div class="form-group">
-                <small class="text-danger"><%=(backToTheFutureErr != null ? backToTheFutureErr : "")%></small>
+                <small class="text-danger"><%=(timeFilterErr != null ? timeFilterErr : "")%></small>                
+                <small class="text-danger"><%=(dateParseError != null ? dateParseError : "")%></small>
+                <small class="text-danger"><%=(filterErr != null ? filterErr : "")%></small>
+                <small class="text-secondary"><%=(filterText != null ? filterText : "")%></small>                
             </div>
         <table class="table table-bordered text-nowrap">
             <thead>

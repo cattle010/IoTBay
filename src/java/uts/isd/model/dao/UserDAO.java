@@ -111,4 +111,18 @@ public class UserDAO {
         }        
         return false;
     }
+    
+        //Show USER Info onto User List
+    public ArrayList<User> ShowUser() throws SQLException{
+        String query = "SELECT * FROM iotbayadmin.USER_T ORDER BY UserID";
+        ArrayList<User> UserList = new ArrayList<User>();
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()) {
+            User user = new User(rs.getInt("UserID"), rs.getString("UserEmail"), rs.getString("UserFirstName"), rs.getString("UserLastName"), rs.getString("Password"), rs.getString("PhoneNumber"), rs.getBoolean("isStaffUser"),rs.getBoolean("isRegisteredUser"));
+            UserList.add(user);
+        } 
+        
+        return UserList;
+    }
 }
