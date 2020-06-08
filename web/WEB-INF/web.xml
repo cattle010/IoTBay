@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
+<<<<<<< HEAD
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>uts.isd.controller.ConnServlet</servlet-class>
     </servlet>
@@ -29,6 +30,8 @@
         <servlet-class>uts.isd.controller.ViewAccessLogsServlet</servlet-class>
     </servlet>
     <servlet>
+=======
+>>>>>>> master
         <servlet-name>ViewServlet</servlet-name>
         <servlet-class>controller.ViewServlet</servlet-class>
     </servlet>
@@ -55,6 +58,7 @@
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
         <servlet-class>controller.UpdateServlet</servlet-class>
+<<<<<<< HEAD
     </servlet>    <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -83,6 +87,9 @@
         <servlet-name>ViewAccessLogsServlet</servlet-name>
         <url-pattern>/ViewAccessLogsServlet</url-pattern>
     </servlet-mapping>
+=======
+    </servlet>
+>>>>>>> master
     <servlet-mapping>
         <servlet-name>ViewServlet</servlet-name>
         <url-pattern>/ViewServlet</url-pattern>
