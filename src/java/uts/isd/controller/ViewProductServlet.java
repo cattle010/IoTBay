@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 
@@ -20,9 +20,9 @@ import uts.isd.model.*;
 import uts.isd.model.dao.*;
 /**
  *
- * @author shuukinpuku
+ * @author Xuanhao Zhou
  */
-public class ViewServlet extends HttpServlet {
+public class ViewProductServlet extends HttpServlet {
 
    @Override   
     protected void doGet(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
@@ -35,9 +35,9 @@ public class ViewServlet extends HttpServlet {
            try {       
                     products = manager.fetchProduct(); 
                     session.setAttribute("products", products);//13-save the logged in user object to the session
-                    request.getRequestDispatcher("view.jsp").forward(request,response);
+                    request.getRequestDispatcher("viewproduct.jsp").forward(request,response);
             }catch (SQLException | NullPointerException ex) {
-                    Logger.getLogger(ViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
           
         }

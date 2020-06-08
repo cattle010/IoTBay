@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,32 +22,27 @@ import uts.isd.model.dao.*;
  *
  * @author shuukinpuku
  */
-public class EditServlet extends HttpServlet {
-    
+public class DeleteProductServlet extends HttpServlet {
+
     @Override   
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {
         HttpSession session = request.getSession();//1- retrieve the current session
         Validator validator = new Validator();//2- create an instance of the Validator class    
         int productID = Integer.parseInt(request.getParameter("pID"));  
         DBManager manager = (DBManager) session.getAttribute("manager");
         
-        Product editproduct;
         ArrayList<Product> products;
         
         try{
-                editproduct = manager.findProduct(productID);
-                session.setAttribute("editproduct",editproduct);      //8-set incorrect email error to the session           
-                request.getRequestDispatcher("update.jsp").include(request,response);
+            if(manager.checkProduct(productID))
+                manager.deleteProduct(productID);
                 products = manager.fetchProduct(); 
                 session.setAttribute("products", products);
-                session.setAttribute("updateMess","Update successfully");
+            request.getRequestDispatcher("viewproduct.jsp").include(request,response);
+        }catch(SQLException | NullPointerException ex) {
+                Logger.getLogger(DeleteProductServlet.class.getName()).log(Level.SEVERE, null, ex); 
         }
-        catch (SQLException | NullPointerException ex) {
-                Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex); 
-        }
-        
-
+            
         
     }
-
 }

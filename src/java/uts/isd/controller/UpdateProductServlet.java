@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import uts.isd.model.dao.*;
  *
  * @author shuukinpuku
  */
-public class UpdateServlet extends HttpServlet {
+public class UpdateProductServlet extends HttpServlet {
 
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
@@ -40,12 +40,12 @@ public class UpdateServlet extends HttpServlet {
         
         try{
             manager.updateProduct(productID,productName,brandName,description,cpu,stock);
-            request.getRequestDispatcher("update.jsp").include(request,response);
+            request.getRequestDispatcher("updateproduct.jsp").include(request,response);
             products = manager.fetchProduct(); 
             session.setAttribute("products", products);
         }
         catch (SQLException | NullPointerException ex) {
-                Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex); 
+                Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex); 
         }
         
 

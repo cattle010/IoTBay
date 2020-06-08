@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,9 +15,9 @@ import uts.isd.model.dao.*;
 
 /**
  *
- * @author shuukinpuku
+ * @author Xuanhao Zhou
  */
-public class AddServlet extends HttpServlet {
+public class AddProductServlet extends HttpServlet {
 
    @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
@@ -42,21 +37,20 @@ public class AddServlet extends HttpServlet {
         try{
             if(manager.checkProduct(productID)){
                 session.setAttribute("existErr", "Error:this product ID already exist");      //8-set incorrect email error to the session           
-                request.getRequestDispatcher("add.jsp").include(request,response);
+                request.getRequestDispatcher("addproduct.jsp").include(request,response);
             }else{
                 manager.addProduct(productID,productName,brandName,description,cpu,stock);
-                request.getRequestDispatcher("add.jsp").include(request,response);
+                request.getRequestDispatcher("addproduct.jsp").include(request,response);
                 session.setAttribute("addSucc", "Add product successfully");
                 products = manager.fetchProduct(); 
                 session.setAttribute("products", products);
             }
         }
         catch (SQLException | NullPointerException ex) {
-                Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex); 
+                Logger.getLogger(AddProductServlet.class.getName()).log(Level.SEVERE, null, ex); 
         }
         
 
         
     }
-
 }
