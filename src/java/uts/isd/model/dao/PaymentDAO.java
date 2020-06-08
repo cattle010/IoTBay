@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import uts.isd.model.Payment;
@@ -29,21 +28,56 @@ public class PaymentDAO {
     }
     
     //Create Payment
-    public void addPayment(int PaymentID, String PaymentName) throws SQLException {
+    public void addPayment(int PaymentID, String PaymentName, String PaymentStatus, double PaymentAmount, Date PaymentDate, String PaymentMethod, String CardFName, String CardLName, long CardNumber, Date CardValid, Date CardExpire, int CardSecurityNum) throws SQLException {
         String query = "INSERT INTO iotbayadmin.ACCESSLOG_T(PaymentID, PaymentName, PaymentStatus, PaymentAmount, PaymentDate, PaymentMethod, CardFName, CardLName, CardNumber, CardValid, CardExpire, CardSecurityNum) VALUES (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setInt(1, PaymentID);
         pstmt.setString(2, PaymentName);
+        pstmt.setString(3, PaymentStatus);
+        pstmt.setDouble(4, PaymentAmount);
+        pstmt.setDate(5, (java.sql.Date) PaymentDate);
+        pstmt.setString(6, PaymentMethod);
+        pstmt.setString(7, CardFName);
+        pstmt.setString(8, CardLName);
+        pstmt.setLong(9, CardNumber);
+        pstmt.setDate(10, (java.sql.Date) CardValid);
+        pstmt.setDate(11, (java.sql.Date) CardExpire);
+        pstmt.setInt(12, CardSecurityNum);
         pstmt.executeUpdate();
         pstmt.close();
     }
     //Read Payment
-        public ArrayList<Payment> fetchAllPayments(int PaymentID) throws SQLException {
-        ArrayList<Payment> retrievedPayments = new ArrayList<Payment>();
-        String query = "SELECT * FROM iotbayadmin.PAYMENT_T WHERE PaymentID IS NOT NULL";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setInt(1, PaymentID);
-        ResultSet rs = pstmt.executeQuery();        
+        public ArrayList<Payment> searchPayment(String searchID) throws SQLException {
+        ArrayList<Payment> searchPayments = new ArrayList();
+        String search = "Select * from iotbayadmin.PAYMENT_T where PaymentID=" + searchID ;
+        ResultSet rs = st.executeQuery(search);
+        
+         while (rs.next()) {
+            int PaymentIDS = rs.getInt(1);
+            String name = rs.getString(2);
+            String status = rs.getString(3);
+            double amount = rs.getDouble(4);
+            Date payDate = rs.getDate(5);
+            String method = rs.getString(6);
+            String fName = rs.getString(7);
+            String lName = rs.getString(8);
+            long cardNumber = rs.getLong(9);
+            Date valid = rs.getDate(10);
+            Date expire = rs.getDate(11);
+            int security = rs.getInt(12);
+            searchPayments.add(new Payment(PaymentIDS, name, status, amount, payDate, method, fName, lName, cardNumber, valid, expire, security));
+        }
+        if(searchPayments.size() > 0){
+            return searchPayments;
+        }
+        else{
+            return null;
+        }
+    }
+         public ArrayList<Payment> fetchPayments() throws SQLException {
+        ArrayList<Payment> payments = new ArrayList();
+        String fetch = "Select * from iotbayadmin.PAYMENT_T";
+        ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next()) {
             int PaymentIDS = rs.getInt(1);
@@ -58,12 +92,37 @@ public class PaymentDAO {
             Date valid = rs.getDate(10);
             Date expire = rs.getDate(11);
             int security = rs.getInt(12);
-            retrievedPayments.add(new Payment(PaymentIDS, name, status, amount, payDate, method, fName, lName, cardNumber, valid, expire, security));
+            payments.add(new Payment(PaymentIDS, name, status, amount, payDate, method, fName, lName, cardNumber, valid, expire, security));
         }
-        
-        return retrievedPayments;        
+        return payments;
     }
-    //Update Payment
-    //Delete Payment
+        public boolean checkPayment(String PaymentID) throws SQLException{
+       String fetch = "select * from iotbayadmin.PAYMENT_T where PaymentID = '" + PaymentID + "'";
+       ResultSet rs = st.executeQuery(fetch);
+       
+       while(rs.next()) {
+           String userPayment = rs.getString(1);
+           
+           if (userPayment.equals(PaymentID)) {
+               return true;
+           }
+       }
+       return false;
+   }
+        
+        
+        
+         //Update Payment
+        public void updatePayment(String PaymentName, String PaymentStatus, double PaymentAmount, Date PaymentDate, String PaymentMethod, String CardFName, String CardLName, long CardNumber, Date CardValid, Date CardExpire, int CardSecurityNum) throws SQLException{
+        st.executeUpdate("UPDATE iotbayadmin.PAYMENT_T SET PaymentName='" + PaymentName + "', PaymentStatus'=" + PaymentStatus +"', PaymentAmount='" + PaymentAmount +"', PaymentDate='" + PaymentDate +"', PaymentMethod='" + PaymentMethod +"', CardFName='" + CardFName + "', CardLName='" + CardLName + "', CardNumber'" + CardNumber + "', CardValid'" + CardValid + "', CardExpire'" + CardExpire + "', CardSecurityNum'" + CardSecurityNum);
+    }
+        //Delete Payment
+        public void deletePayment(String PaymentID) throws SQLException {
+        st.executeUpdate("DELETE FROM iotbayadmin.PAYMENT_T WHERE PaymentID='" + PaymentID + "'");
+    }
+        
+        
+   
+    
 }
 

@@ -28,6 +28,10 @@
         <servlet-name>ViewAccessLogsServlet</servlet-name>
         <servlet-class>uts.isd.controller.ViewAccessLogsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewPaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.NewPaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ViewAccessLogsServlet</servlet-name>
         <url-pattern>/ViewAccessLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPaymentServlet</servlet-name>
+        <url-pattern>/NewPaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
