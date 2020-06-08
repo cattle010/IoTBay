@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  *
  * @author jason
+ * Mamoon -> Modified Model to include card details
  */
 public class Payment implements Serializable {
     private int paymentID;
@@ -18,8 +19,16 @@ public class Payment implements Serializable {
     private String paymentStatus;
     private double paymentAmount;
     private Date paymentDate;
+    private String paymentMethod;
+    private String cardFName;
+    private String cardLName;
+    private int cardNumber;
+    private Date cardValid;
+    private Date cardExpire;
+    private int cardSecurityNum;
+    
 
-    public Payment(int paymentID, String paymentName, String paymentStatus, double paymentAmount, Date paymentDate) {
+    public Payment(int paymentID, String paymentName, String paymentStatus, double paymentAmount, Date paymentDate, String paymentMethod, String cardFName, String cardLName,int cardNumber, Date cardValid, Date cardExpire, int cardSecurityNum) {
         this.paymentID = paymentID;
         this.paymentName = paymentName;
         this.paymentStatus = paymentStatus;
@@ -65,6 +74,62 @@ public class Payment implements Serializable {
 
     public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getCardFName() {
+        return cardFName;
+    }
+
+    public void setCardFName(String cardFName) {
+        this.cardFName = cardFName;
+    }
+
+    public String getCardLName() {
+        return cardLName;
+    }
+
+    public void setCardLName(String cardLName) {
+        this.cardLName = cardLName;
+    }
+
+    public int getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(int cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public Date getCardValid() {
+        return cardValid;
+    }
+
+    public void setCardValid(Date cardValid) {
+        this.cardValid = cardValid;
+    }
+
+    public Date getCardExpire() {
+        return cardExpire;
+    }
+
+    public void setCardExpire(Date cardExpire) {
+        this.cardExpire = cardExpire;
+    }
+
+    public int getCardSecurityNum() {
+        return cardSecurityNum;
+    }
+
+    public void setCardSecurityNum(int cardSecurityNum) {
+        this.cardSecurityNum = cardSecurityNum;
     }
     
     
