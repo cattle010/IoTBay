@@ -60,6 +60,10 @@ public class Validator implements Serializable{
        session.setAttribute("updateErr", "");
        session.setAttribute("emailExistErr", "");
        session.setAttribute("userExistErr", "");
-       session.setAttribute("backToTheFutureErr", "");
+       session.setAttribute("timeFilterError", ""); 
+       session.setAttribute("dateParseError", "");
+       session.setAttribute("filterErr", "");
+       session.setAttribute("filterText", "");
+       session.setAttribute("timeFilterErr", "");
    }
 }

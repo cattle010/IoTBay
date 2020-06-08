@@ -30,25 +30,25 @@
             <form method="post" action="RegisterServlet">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="firstName">First Name</label>
+                        <label for="firstName">First Name<span class="text-danger"> *</span></label>
                         <small class="text-danger"><%=(firstNameErr != null ? firstNameErr : "")%></small>
                         <input name="firstName" type="text" class="form-control" placeholder="Enter first name..." required>
                         <small class="text-muted">Only alphabetical and special characters like . ' - allowed</small>
                     </div>
                     <div class="form-group col">
-                        <label for="lastName">Last Name</label>                        
+                        <label for="lastName">Last Name<span class="text-danger"> *</span></label>                        
                         <small class="text-danger"><%=(lastNameErr != null ? lastNameErr : "")%></small>
                         <input name="lastName" type="text" class="form-control" placeholder="Enter last name..." required>                        
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>  
+                    <label for="email">Email Address<span class="text-danger"> *</span></label>  
                     <small class="text-danger"><%=(emailErr != null ? emailErr : "")%></small>
                     <input name="email"type="email" class="form-control" placeholder="Enter email.." required>
                     <small class="text-muted">Your email can contain letters, numbers and special characters like . _ -</small>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>     
+                    <label for="password">Password<span class="text-danger"> *</span></label>     
                     <small class="text-danger"><%=(passErr != null ? passErr : "")%></small>
                     <input name="password" type="password" class="form-control" placeholder="Enter password..." required>
                     <small class="text-muted">Your password must be between 4 - 100 characters and can only contain numbers, uppercase and lowercase letters</small>
@@ -60,7 +60,8 @@
                     <small class="text-muted">Your phone number must be exactly 10 digits long and can only contain numbers</small>
                 </div>
                 <div class="form-group">
-                    <a class="form-text text-muted" href="login.jsp">Already have an account? Log in here!</a>
+                    <a class="form-text text-info" href="login.jsp">Already have an account? Log in here!</a>
+                    <p class="text-danger">* Required</p>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
