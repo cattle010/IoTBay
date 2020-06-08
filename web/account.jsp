@@ -22,6 +22,7 @@
             <nav class="nav justify-content-center">
                 <a class="nav-link nav-item active" href="account.jsp">Account</a>                    
                 <a class="nav-link nav-item active" href="logout.jsp">Logout</a>
+                <a class="nav-link nav-item active" href="index.jsp">Logout</a>
             </nav>
             <div class="row">
                 <div class="container">
