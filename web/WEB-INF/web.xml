@@ -51,6 +51,12 @@
     <servlet>
         <servlet-name>DirectToProductServlet</servlet-name>
         <servlet-class>uts.isd.controller.DirectToProductServlet</servlet-class>
+        <servlet-name>NewPaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.NewPaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.DeletePaymentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -103,6 +109,12 @@
     <servlet-mapping>
         <servlet-name>DirectToProductServlet</servlet-name>
         <url-pattern>/DirectToProductServlet</url-pattern>
+        <servlet-name>NewPaymentServlet</servlet-name>
+        <url-pattern>/NewPaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentServlet</servlet-name>
+        <url-pattern>/DeletePaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
