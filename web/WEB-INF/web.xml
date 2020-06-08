@@ -24,6 +24,10 @@
         <servlet-name>ViewProductServlet</servlet-name>
         <servlet-class>uts.isd.controller.ViewProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DirectToProductServlet</servlet-name>
+        <servlet-class>uts.isd.controller.DirectToProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ViewProductServlet</servlet-name>
         <url-pattern>/ViewProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DirectToProductServlet</servlet-name>
+        <url-pattern>/DirectToProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

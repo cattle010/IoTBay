@@ -90,7 +90,7 @@ th {
     </div>
     
     
-    <a href="index.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
+    <a href="account.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
 
     <script src="js/tablescript.js" type="text/javascript"></script>
     </body>

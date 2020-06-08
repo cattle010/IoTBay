@@ -50,15 +50,7 @@ public class ConnServlet extends HttpServlet {
            //export the DB manager to the view-session (JSPs)
            session.setAttribute("manager", manager);          
            
-          ArrayList<Product> products;
-           
-           try {       
-                    products = manager.fetchProduct(); 
-                    session.setAttribute("products", products);//13-save the logged in user object to the session
-                    request.getRequestDispatcher("viewproduct.jsp").forward(request,response);
-            }catch (SQLException | NullPointerException ex) {
-                    Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+          
        }   
 
 
