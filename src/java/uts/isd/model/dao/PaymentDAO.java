@@ -73,7 +73,7 @@ public class PaymentDAO {
             return null;
         }
     }
-         public ArrayList<Payment> fetchPayments() throws SQLException {
+        public ArrayList<Payment> fetchPayments() throws SQLException {
         ArrayList<Payment> payments = new ArrayList();
         String fetch = "Select * from iotbayadmin.PAYMENT_T";
         ResultSet rs = st.executeQuery(fetch);
@@ -116,7 +116,7 @@ public class PaymentDAO {
         st.executeUpdate("UPDATE iotbayadmin.PAYMENT_T SET PaymentName='" + PaymentName + "', PaymentStatus'=" + PaymentStatus +"', PaymentAmount='" + PaymentAmount +"', PaymentDate='" + PaymentDate +"', PaymentMethod='" + PaymentMethod +"', CardFName='" + CardFName + "', CardLName='" + CardLName + "', CardNumber'" + CardNumber + "', CardValid'" + CardValid + "', CardExpire'" + CardExpire + "', CardSecurityNum'" + CardSecurityNum);
     }
         //Delete Payment
-        public void deletePayment(String PaymentID) throws SQLException {
+        public void deletePayment(int PaymentID) throws SQLException {
         st.executeUpdate("DELETE FROM iotbayadmin.PAYMENT_T WHERE PaymentID='" + PaymentID + "'");
     }
         

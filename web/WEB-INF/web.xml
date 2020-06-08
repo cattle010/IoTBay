@@ -32,6 +32,10 @@
         <servlet-name>NewPaymentServlet</servlet-name>
         <servlet-class>uts.isd.controller.NewPaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.DeletePaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>NewPaymentServlet</servlet-name>
         <url-pattern>/NewPaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentServlet</servlet-name>
+        <url-pattern>/DeletePaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

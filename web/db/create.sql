@@ -7,7 +7,6 @@ Create database objects for IoTBay Assignment
 */
 
 -- DROP TABLES UPON TABLE CREATION TO PREVENT ISSUES WITH DATA INSERTION
- 
 ALTER TABLE ACCESSLOG_T DROP CONSTRAINT ACCESSLOG_FK;
 ALTER TABLE ORDER_T DROP CONSTRAINT ORDER_FK1;
 ALTER TABLE ORDER_T DROP CONSTRAINT ORDER_FK2;
@@ -21,7 +20,6 @@ DROP TABLE SHIPPINGADDRESS_T;
 DROP TABLE PRODUCT_T;
 DROP TABLE ORDER_T;
 DROP TABLE ORDERLINEITEM_T;
-
 
 CREATE TABLE USER_T (
     UserID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1,  INCREMENT BY 1),
@@ -101,7 +99,7 @@ CREATE TABLE ORDERLINEITEM_T (
     Quantity INTEGER NOT NULL,
     CONSTRAINT ORDERLINEITEM_PK PRIMARY KEY (OrderID, ProductID),
     CONSTRAINT ORDERLINEITEM_FK1 FOREIGN KEY (OrderID) REFERENCES ORDER_T(OrderID),
-    CONSTRAINT ORDERLINEITEM_FK2 FOREIGN KEY (ProductID) REFERENCES PRODUCT_T(ProductID)
+    CONSTRAINT ORDERLINEITEM_FK2 FOREIGN KEY (ProductID) REFERENCES PRODUCT_T(ProductID) 
 );
 
 -----------------------------------------------------------------------------------------------
@@ -123,7 +121,19 @@ INSERT INTO USER_T(UserEmail, UserFirstName, UserLastName, Password, PhoneNumber
 ('kerry_ryan123@live.com', 'Kerry', 'Rogers', 'cW7r8k6aHxqXRKy0cKX2v9tht8', '0404086357', FALSE, TRUE),
 ('s_turnbull99@gmail.com', 'Selina', 'Turnbull', 'C85oWWE4mqfYuqcNzhlZPrZvU1', '0404531054', FALSE, FALSE),
 ('c_roman@outlook.com', 'Coral', 'Roman', 'eU668CCHDEUDRmZKcE7rsdQBCW', NULL, FALSE, TRUE),
-('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'DuFlB37K7uTCePEuYeN574eU88', '0404784865', FALSE, FALSE);
+('j.mac12gmail.com', 'Jolie', 'Mcfarland', 'DuFlB37K7uTCePEuYeN574eU88', '0404784865', FALSE, FALSE),
+('andrewconstantine@gmail.com', 'Andrew', 'Constantine', 'MMfZWN6G96nEz6C6uUr367v2', '6969696969', FALSE, FALSE),
+('Chrisgatford321@yahoo.com', 'Christopher', 'Gatford', '6coigsa6YHOEYMjtMdqBP84K', NULL, FALSE, TRUE),
+('Larrygago@servicenever.com', 'Larry', 'Gago', '4vAtNU608pEWmKnpqZKp4aG4', '0985236431', FALSE, FALSE),
+('anduwughorpade12@challenger.com', 'Andrew', 'Goparty', 'tvWOHUgyE2wRn2xo12L5HbAW', '8765333098', FALSE, FALSE),
+('andrecrain69@canva.com', 'Andre', 'Crain', 'q7nMSgmq7QmlvwKqW7GeAtCT', NULL, FALSE, TRUE),
+('michellechoy@rba.com', 'Michelle', 'Choy', 'KARKqHt5B91V7RGhO1JMyN8C', NULL, FALSE, FALSE),
+('matthewjonatan@yahoo.com', 'Matthew', 'Jonatan', 'li96S2nvHt447yErKorfJQbN', NULL, FALSE, FALSE),
+('carmelaoblea@wsu.com', 'Carmela', 'Oblea', 'x877VoWeoJJO3WRq3Yl5VcpU', '6945456452', FALSE, TRUE),
+('elizabethwaite666@westpac.com', 'Elizabeth', 'Waite', 'u5NB4WRuqEVxlJtpF1gUe3Z1', '6654675212', FALSE, TRUE),
+('evachen7878@gmail.com', 'Eva', 'Chen', 'elXWN7f2kG3piuHKP11QoXz5', NULL, FALSE, FALSE),
+('tombrawley23@gmail.com', 'Tom', 'Brawley', 'lwfZYSaR1NXBYpso7Q81F3N4', NULL, FALSE, TRUE),
+('Garyanderson123@yahoo.com', 'Gary', 'Anderson', 'MvUjIw0GOm5GWBkxcBYSLYRW', '4235324432', FALSE, FALSE);
 
 -- ACCESSLOG_T Entries
 INSERT INTO ACCESSLOG_T(UserID, LogEventTime, LogEvent) VALUES 
@@ -173,17 +183,28 @@ INSERT INTO ACCESSLOG_T(UserID, LogEventTime, LogEvent) VALUES
 (1, '2020-05-18 20:45:34', 'User Logged Out');
 
 -- PAYMENT_T Entries
-INSERT INTO PAYMENT_T(PaymentName, PaymentStatus, PaymentAmount, PaymentDate) VALUES 
-('PayPal', 'Paid', 0142.12, '2020-05-02 15:43:12'),
-('Credit Card', 'Paid', 1247.00, '2020-05-03 12:32:44'),
-('Debit Card', 'Unpaid', 5321.00, '2020-05-06 18:37:53'),
-('PayPal', 'Paid', 0042.52, '2020-05-07 11:53:42'),
-('Credit Card', 'Unpaid', 0020.00, '2020-05-08 23:53:36'),
-('Credit Card', 'Unpaid', 1074.97, '2020-05-09 10:52:56'),
-('Debit Card', 'Paid', 8753.00, '2020-05-10 21:59:33'),
-('PayPal', 'Paid', 0106.62, '2020-05-13 15:31:43'),
-('PayPal', 'Paid', 0652.12, '2020-05-15 20:40:32'),
-('Credit Card', 'Unpaid', 1538.53, '2020-05-17 12:42:32');
+INSERT INTO PAYMENT_T(PaymentName, PaymentStatus, PaymentAmount, PaymentDate, PaymentMethod, CardFName, CardLName, CardNumber, CardValid, CardExpire, CardSecurityNum) VALUES 
+('Raspberypi', 'Paid', 0142.12, '2020-01-21 17:22:54', 'Debit Card', 'Jackson', 'Marsipan', 3253857473956718, '2020-05-11 12:05:17', '2020-09-30 23:40:56', 232),
+('Hakko FX-888D Digital Soldering Station', 'Paid', 1247.00, '2020-01-09 23:42:20','Credit Card', 'Max', 'Balooma', 1548649756489543, '2020-06-07 02:02:11', '2020-11-15 19:22:51', 748),
+('Sphero SPRK+ Edition - Power Pack', 'Unpaid', 5321.00, '2020-02-10 19:53:58', 'Credit Card', 'Jason', 'Matta', 1234974651646754, '2020-05-04 03:36:03', '2020-09-08 12:43:03', 562),
+('Sphero SPRK+ Edition - Power Pack', 'Paid', 0042.52, '2020-01-13 05:50:20', 'Visa Card', 'Alex', 'Whitehall', 5473467458134613, '2020-04-02 20:58:39', '2020-10-13 16:41:34', 533),
+('Raspberypi 4', 'Unpaid', 0020.00, '2020-02-08 20:03:56', 'Debit Card','Homer', 'Turner', 1473747473637474, '2020-06-23 03:18:22', '2020-10-05 05:06:54', 323),
+('Sphero SPRK+ Edition - Power Pack', 'Unpaid', 1074.97, '2020-02-11 18:14:15', 'Visa Card', 'Lisa', 'Turpintine', 1549794398461546, '2020-08-15 14:51:50', '2020-09-11 14:36:10', 544),
+('Pycom FiPy', 'Paid', 8753.00, '2020-01-27 10:07:55', 'Debit Card', 'Boruto', 'Potter', 468489874649561486, '2020-04-22 13:25:39', '2020-11-06 15:34:33', 122),
+('Sphero SPRK+ Edition - Power Pack', 'Paid', 0106.62, '2020-01-22 22:42:48', 'Debit Card', 'Sasuke', 'Uchiha', 1249761648646846, '2020-05-19 14:02:38', '2020-11-18 03:52:21', 211),
+('Circuit Playground Express', 'Paid', 0652.12, '2020-02-22 16:09:20', 'Debit Card', 'Kakashi', 'Hatake', 4564946464893456, '2020-04-07 11:42:10', '2020-10-25 04:24:51', 648),
+('Hakko FX-888D Digital Soldering Station', 'Unpaid', 1538.53, '2020-02-02 03:29:19', 'Credit Card', 'Minato', 'Namikaze', 6486497346679145, '2020-05-28 16:39:03', '2020-09-18 06:34:35', 145),
+('Sphero SPRK+ Edition - Power Pack', 'Paid', 0142.12, '2020-02-15 08:01:42', 'Debit Card', 'Hiruzen', 'Sarutobi', 46484681279460, '2020-03-23 03:34:06', '2020-10-27 09:47:54', 652),
+('Raspberypi', 'Paid', 1247.00, '2020-01-03 20:45:35', 'Debit Card', 'Hashirama', 'Senju', 648648972648953, '2020-06-04 03:54:14', '2019-10-09 18:24:59', 352),
+('Circuit Playground Express', 'Unpaid', 5321.00, '2020-03-01 11:21:49', 'Visa Card', 'Jiraiya', 'Sannin', 46884694315+480, '2020-03-31 04:40:01', '2020-11-18 10:21:22', 428),
+('Pycom FiPy', 'Paid', 0042.52, '2020-02-25 07:38:54', 'Credit Card', 'Lee', 'Rock', 459713468168235, '2020-04-26 01:32:33', '2020-09-06 14:44:29', 512),
+('Credit Card', 'Unpaid', 0020.00, '2020-02-16 06:40:07', 'Debit Card', 'Gaara', 'Subaku', 561943491346144, '2020-03-23 03:34:04', '2020-09-02 16:26:44', 678),
+('Circuit Playground Express ', 'Unpaid', 1074.97, '2020-02-17 02:21:49', 'Credit Card', 'Sakura', 'Haruno', 4461676751846248, '2020-05-26 16:24:48', '2020-11-15 21:21:32', 584),
+('Raspberypi', 'Paid', 8753.00, '2020-01-28 04:48:25', 'Debit Card', 'Neji', 'Hyuuga', 157943516486135, '2020-05-09 22:34:41', '2020-11-12 22:57:16', 782),
+('Hakko FX-888D Digital Soldering Station', 'Paid', 0106.62, '2020-02-27 18:09:08','Visa Card', 'Kiba', 'Inuzuka', 8564816481615486, '2020-06-12 12:27:32', '2020-10-13 19:01:19', 545),
+('Circuit Playground Express', 'Paid', 0652.12, '2020-02-02 08:41:02','Debit Card', 'Ino', 'Yamanaka', 149463154613546, '2020-06-16 02:33:42', '2020-09-19 01:16:05', 384),
+('Pycom FiPy', 'Unpaid', 1538.53, '2020-01-12 01:40:23', 'CreditCard', 'Shino', 'Bugsy', 1648646485915463, '2020-04-20 11:33:40', '2020-10-28 19:22:43', 473);
+
 
 -- SHIPPINGADDRESS_T Entries
 INSERT INTO SHIPPINGADDRESS_T(StreetNumber, StreetName, City, State, Postcode, Country) VALUES
@@ -196,7 +217,23 @@ INSERT INTO SHIPPINGADDRESS_T(StreetNumber, StreetName, City, State, Postcode, C
 ('310', 'Hamilton Street', 'Chatswood', 'NSW', 2067, 'Australia'),
 ('4A', 'Brandon Road', 'Hurstville', 'NSW', 2220, 'Australia'),
 ('32', 'Cornelia Crescent', 'Hornsby', 'NSW', 2077, 'Australia'),
-('18', 'Smitherson Street', 'Lane Cove', 'NSW', 2066, 'Australia');
+('18', 'Smitherson Street', 'Lane Cove', 'NSW', 2066, 'Australia'),
+('76', 'Addison Street', 'Parramatta', 'NSW', 2150, 'Australia'),
+('43B', 'Ward Road', 'Waterloo', 'NSW', 2017, 'Australia'),
+('634', 'Apple Street', 'Mascot', 'NSW', 2020, 'Australia'),
+('65', 'Banana Avenue', 'Sydney', 'NSW', 2000, 'Australia'),
+('910B', 'Grape Street', 'Parramatta', 'NSW', 2150, 'Australia'),
+('438', 'Peanut Road', 'Engadine', 'NSW', 2233, 'Australia'),
+('54', 'Nutella Street', 'Chatswood', 'NSW', 2067, 'Australia'),
+('3A', 'Comanche Road', 'Hurstville', 'NSW', 2220, 'Australia'),
+('12', 'Cressidia Crescent', 'Hornsby', 'NSW', 2077, 'Australia'),
+('90', 'Peterson Street', 'Lane Cove', 'NSW', 2066, 'Australia'),
+('17B', 'Germany Street', 'Parramatta', 'NSW', 2150, 'Australia'),
+('111', 'Britain Road', 'Engadine', 'NSW', 2233, 'Australia'),
+('33', 'New Zealand Street', 'Chatswood', 'NSW', 2067, 'Australia'),
+('9099', 'Yellow Road', 'Hurstville', 'NSW', 2220, 'Australia'),
+('123', 'Cricket Crescent', 'Hornsby', 'NSW', 2077, 'Australia'),
+('55', 'Lemon Street', 'Lane Cove', 'NSW', 2066, 'Australia');
 
 -- PRODUCT_T Entries
 INSERT INTO PRODUCT_T(ProductName, BrandName, Description, CostPerUnit, Stock) VALUES 
@@ -214,20 +251,36 @@ INSERT INTO PRODUCT_T(ProductName, BrandName, Description, CostPerUnit, Stock) V
 ('Hakko FX-888D Digital Soldering Station', 'Hakko', 'The Hakko FX-888D is our go to recommendation for a high-quality soldering iron that has all the features and specs you''d normally find in a much more expensive iron. The FX-888D is incredibly easy to use with a digital readout and interface requiring only two buttons for usage. With this, you can set the temperature, create up to 5 presets for different solder profiles, and set a password to avoid accidental setting changes. The FX-888D is compatible with T18 series tips and has a 30% increase in heater output compared to the standard Hakko 936/937.', 0195.95, 100),
 ('littleBits Workshop Set', 'LittleBits', 'This is the 2018 edition of the Workshop Set from littleBits. The Workshop Set is a massive collection of littleBits modules that is fit for a whole class (or workshop) full of young learners. In addition to the 160 littleBits Modules and ~180 littleBits accessories, the Workshop Set is loaded educational value. The comprehensive ''Getting Started With littleBits'' Workshop guide (Preview here) is the perfect way to introduce young learners to littleBits in a fun, educational and simple enough way. Each bit and accessory is covered as well as some basic circuits that show students the way things work (like bit order and polarity). This Set is a great pickup for any school/classroom/makerspace looking to introduce littleBits for their STEM education program. LittleBits educates in a ''learning by doing'' way that every student can appreciate and be inspired by. Once you''ve covered the basics using the included educational guide, you can utilise the littleBits learning cycle in order to drive successful workshops/classes with littleBits. You and your students will spend the majority of lessons trying new things, iterating through new concepts and designs and using one of the most trusted and reliable STEM technologies to do so. A great part about littleBits is that they have an entire online learning and sharing platform that''s safe for students to use! And finally, when it comes to packing down and putting it all away, the Workshop set comes with the substantial carry case, that''s just the right size to pack it all up into! If you''ve got any questions about the Workshop Set, littleBits, or anything STEM education related, get in touch with us. We''re here to help.', 3599.00, 20),
 ('Circuit Playground Express', 'Adafruit', 'Circuit Playground Express is the next step towards a perfect introduction to electronics and programming. Adafruit have taken the original Circuit Playground Classic and made it even better! Not only did Adafruit pack even more sensors in, They also made it even easier to program. You can now start your journey with Microsoft MakeCode block-based or Javascript programming. Then, you can use the same board to try CircuitPython, with the Python interpreter running right on the Express. As you progress, you can advance to using Arduino IDE, which has full support of all the hardware down to the low level, so you can make powerful projects. We have lots of tutorials for both MakeCode and CircuitPython for the Circuit Playground Express! Because you can program the same board in 3 different ways - the Express has great value and re-usability. From beginners to experts, Circuit Playground Express has something for everyone. If you are looking for Adafruit''s original, Arduino-only Circuit Playground, check out the Circuit Playground Classic. The board is round and has alligator-clip pads around it so you don''t have to solder or sew to make it work. You can power it from USB, a AA battery pack, or with a Lipoly battery (for advanced users). Circuit Playground Express has built-in USB support. Built-in USB means you plug it in to program it and it just shows up, no special cable or adapter required. Just program your code into the board then take it on the go!', 0047.47, 1000),
-('littleBits Servo - Cross Axle', 'LittleBits', 'The servo Bit is something that we''re really excited about – a controllable motor that can swing back and forth! It has two modes: in “Turn” mode, the input from other littleBits determines the position of the arm – try using a dimmer to set the angle you want. In “Swing” mode, the servo will move back and forth on its own – the input controls how fast it goes. Attach a flag to the arm to make a signaling machine! Check out littleBits Tips + Tricks for more ideas on using the servo!', 0049.96, 1000);
+('littleBits Servo - Cross Axle', 'LittleBits', 'The servo Bit is something that we''re really excited about – a controllable motor that can swing back and forth! It has two modes: in “Turn” mode, the input from other littleBits determines the position of the arm – try using a dimmer to set the angle you want. In “Swing” mode, the servo will move back and forth on its own – the input controls how fast it goes. Attach a flag to the arm to make a signaling machine! Check out littleBits Tips + Tricks for more ideas on using the servo!', 0049.96, 1000),
+('Arduino MKR NB 1500 NB-IOT & LTE CAT-M1', 'Arduino', 'The new standard Narrow Band IoT with the ease of use of the Arduino ecosystem. Fully compatible with the global Narrow Band IoT NB classes and LTE CAT M1 networks.', 0129.00, 90),
+('Original Arduino Uno SMD Rev3', 'Arduino', 'The Arduino Uno SMD R3 is a microcontroller board based on the ATmega328. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analogue inputs, a 16 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.', 0035.00, 1200),
+('Original Arduino 4 Relays Shield', 'Arduino', 'The Arduino 4 Relays Shield is a solution for driving high power loads that cannot be controlled by Arduino''s digital IOs, due to the current and voltage limits of the controller.', 0020.50, 900),
+('Original Arduino Mini - Development Board', 'Arduino', 'The Arduino Mini is a small microcontroller board originally based on the ATmega168, but now supplied with the 328, intended for use on breadboards and when space is at a premium. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 8 analogue inputs, and a 16 MHz crystal oscillator. It can be programmed with the USB Serial adapter or other USB or RS232 to TTL serial adapter.', 0015.00, 1000),
+('Sparkfun Spectrum Shiekd', 'Sparkfun', 'The Spectrum Shield enables your Arduino with the capability of splitting a stereo audio input into 7-bands per channel. You can then read the amplitude of each channel using the ADC on your Arduino allowing you to control everything from LEDs to motors, pumps to relays, or even fire, all with sound. With this shield you will be able to have almost any project be able to react to music or sound!', 0025.00, 1000),
+('Arduino Shield - Proto Kit Rev3', 'Arduino', 'The Arduino Prototyping Shield Kit makes it easy for you to design custom circuits for your next Arduino project.', 0015.00, 2000);
 
 -- ORDER_T Entries
 INSERT INTO ORDER_T(UserID, PaymentID, ShippingAddressID, OrderDate, ShipDate, OrderStatus) VALUES 
-(5, 1, 1, '2020-05-02 15:43:12', '2020-05-03 16:21:10', 'Shipped'),
-(8, 2, 6, '2020-05-03 12:32:44', '2020-05-04 13:53:21', 'Shipped'),
+(5, 12, 1, '2020-05-02 15:43:12', '2020-05-03 16:21:10', 'Shipped'),
+(3, 2, 6, '2020-05-03 12:32:44', '2020-05-04 13:53:21', 'Shipped'),
 (12, 3, 2, '2020-05-06 18:37:53', NULL, 'Awaiting Payment'),
 (11, 4, 3, '2020-05-07 11:53:42', '2020-05-09 09:44:12', 'Shipped'),
 (7, 5, 5, '2020-05-08 23:53:36', NULL, 'Awaiting Payment'),
 (8, 6, 6, '2020-05-09 10:52:56', NULL, 'Awaiting Payment'),
 (10, 7, 4, '2020-05-10 21:59:33', '2020-05-14 10:24:32', 'Shipped'),
-(9, 8, 7, '2020-05-13 15:31:43', '2020-05-14 10:25:54', 'Shipped'),
+(17, 8, 7, '2020-05-13 15:31:43', '2020-05-14 10:25:54', 'Shipped'),
 (6, 9, 8, '2020-05-15 20:40:32', '2020-05-16 13:20:43', 'Shipped'),
-(5, 10, 1, '2020-05-17 12:42:32', NULL, 'Awaiting Payment');
+(15, 10, 9, '2020-05-17 12:42:32', NULL, 'Awaiting Payment'),
+(4, 11, 1, '2020-05-18 15:43:12', '2020-05-19 16:21:10', 'Shipped'),
+(13, 12, 10, '2020-05-19 12:32:44', '2020-05-29 13:53:21', 'Shipped'),
+(14, 13, 11, '2020-05-19 18:37:53', NULL, 'Awaiting Payment'),
+(15, 14, 15, '2020-05-20 11:53:42', '2020-05-22 09:44:12', 'Shipped'),
+(16, 15, 18, '2020-05-21 23:53:36', NULL, 'Awaiting Payment'),
+(9, 16, 6, '2020-05-21 10:52:56', NULL, 'Awaiting Payment'),
+(1, 17, 10, '2020-05-22 21:59:33', '2020-05-26 10:24:32', 'Shipped'),
+(2, 18, 6, '2020-05-23 15:31:43', '2020-05-27 10:25:54', 'Shipped'),
+(19, 19, 19, '2020-05-24 20:40:32', '2020-05-28 13:20:43', 'Shipped'),
+(20, 20, 20, '2020-05-25 12:42:32', NULL, 'Awaiting Payment');
 
 -- ORDERLINEITEM_T Entries
 INSERT INTO ORDERLINEITEM_T VALUES 
@@ -245,4 +298,19 @@ INSERT INTO ORDERLINEITEM_T VALUES
 (9, 5, 2),
 (10, 15, 2),
 (10, 14, 1),
-(10, 13, 1);
+(10, 13, 1),
+(11, 4, 1),
+(12, 3, 2),
+(12, 5, 2),
+(13, 14, 1),
+(13, 7, 5),
+(13, 15, 2),
+(14, 8, 4),
+(15, 2, 3),
+(16, 4, 1),
+(17, 7, 2),
+(18, 8, 5),
+(19, 3, 2),
+(20, 1, 2),
+(20, 12, 2),
+(20, 15, 1);
