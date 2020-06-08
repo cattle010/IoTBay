@@ -6,6 +6,7 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -34,6 +35,13 @@ public class Payment implements Serializable {
         this.paymentStatus = paymentStatus;
         this.paymentAmount = paymentAmount;
         this.paymentDate = paymentDate;
+        this.paymentMethod = paymentMethod;
+        this.cardFName = cardFName;
+        this.cardLName = cardLName;
+        this.cardNumber = cardNumber;
+        this.cardValid = cardValid;
+        this.cardExpire = cardExpire;
+        this.cardSecurityNum = cardSecurityNum;
     }
 
     public int getPaymentID() {

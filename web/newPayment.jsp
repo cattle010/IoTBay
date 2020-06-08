@@ -10,6 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <%
+            String existErr = (String) session.getAttribute("existErr");;
+            String firstNameErr = (String) session.getAttribute("firstNameErr");
+            String lastNameErr = (String) session.getAttribute("lastNameErr");      
+        %>
         <title>New Payment</title>    
     </head>
     <body>
@@ -31,11 +36,13 @@
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="cardFName">First Name<span class="text-danger"> *</span></label>
+                        <small class="text-danger"><%=(firstNameErr != null ? firstNameErr : "")%></small>
                         <input name="cardFName" type="text" class="form-control" placeholder="Enter First Name on Card..." required>
                         <small class="text-muted">Enter First Name on Card</small>
                     </div>
                     <div class="form-group col">
-                        <label for="cardLName">Last Name<span class="text-danger"> *</span></label>
+                        <label for="cardLName">Last Name<span class="text-danger"> *</span></label>                        
+                        <small class="text-danger"><%=(lastNameErr != null ? lastNameErr : "")%></small>
                         <input name="cardLName" type="text" class="form-control" placeholder="Enter Last Name on Card..." required>      
                          <small class="text-muted">Enter Last Name on Card</small>
                     </div>
