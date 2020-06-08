@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,29 +20,34 @@ import uts.isd.model.dao.*;
 
 /**
  *
- * @author shuukinpuku
+ * @author Xuanhao Zhou
  */
-public class DeleteServlet extends HttpServlet {
-
+public class EditProductServlet extends HttpServlet {
+    
     @Override   
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
         HttpSession session = request.getSession();//1- retrieve the current session
         Validator validator = new Validator();//2- create an instance of the Validator class    
         int productID = Integer.parseInt(request.getParameter("pID"));  
         DBManager manager = (DBManager) session.getAttribute("manager");
         
+        Product editproduct;
         ArrayList<Product> products;
         
         try{
-            if(manager.checkProduct(productID))
-                manager.deleteProduct(productID);
+                editproduct = manager.findProduct(productID);
+                session.setAttribute("editproduct",editproduct);      //8-set incorrect email error to the session           
+                request.getRequestDispatcher("updateproduct.jsp").include(request,response);
                 products = manager.fetchProduct(); 
                 session.setAttribute("products", products);
-            request.getRequestDispatcher("view.jsp").include(request,response);
-        }catch(SQLException | NullPointerException ex) {
-                Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex); 
+                session.setAttribute("updateMess","Update successfully");
         }
-            
+        catch (SQLException | NullPointerException ex) {
+                Logger.getLogger(EditProductServlet.class.getName()).log(Level.SEVERE, null, ex); 
+        }
+        
+
         
     }
+
 }

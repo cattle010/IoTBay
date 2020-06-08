@@ -63,7 +63,7 @@
              
             <div class="form-row">
                 <div class="form-group col">
-                        <a href="view.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
+                        <a href="viewproduct.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
                 </div>
                 
                 <div class="form-group col">

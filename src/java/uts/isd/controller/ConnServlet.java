@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
+package uts.isd.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,7 +17,7 @@ import uts.isd.model.Product;
 
 /**
  *
- * @author shuukinpuku
+ * @author Xuanhao Zhou
  */
 
 public class ConnServlet extends HttpServlet {
@@ -60,9 +55,9 @@ public class ConnServlet extends HttpServlet {
            try {       
                     products = manager.fetchProduct(); 
                     session.setAttribute("products", products);//13-save the logged in user object to the session
-                    request.getRequestDispatcher("view.jsp").forward(request,response);
+                    request.getRequestDispatcher("viewproduct.jsp").forward(request,response);
             }catch (SQLException | NullPointerException ex) {
-                    Logger.getLogger(ViewServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
        }   
 

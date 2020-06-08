@@ -16,8 +16,8 @@
     </head>
     <body>
         <h1>Hello!</h1>
-        <a class="button" href="view.jsp">Staff interface</a>
-        <a class="button" href="userview.jsp">User interface</a>
+        <a class="button" href="viewproduct.jsp">Staff interface</a>
+        <a class="button" href="userviewproduct.jsp">User interface</a>
         
         <jsp:include page="/ConnServlet" flush="true" />
     </body>

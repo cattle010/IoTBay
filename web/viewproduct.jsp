@@ -59,7 +59,7 @@ th {
         <div>
         
              <div style="text-align: right">
-             <a class="button" href="add.jsp">Add new product</a>
+             <a class="button" href="addproduct.jsp">Add new product</a>
              </div>
              <input type="text"  id="myInput"
            onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
@@ -79,8 +79,8 @@ th {
                     <td>${p.stock}</td>
                     
                     <td>
-                        <a class="button" href="EditServlet?pID=${p.productID}">Update</a>
-                        <a class="button" href="DeleteServlet?pID=${p.productID}">Delete</a>
+                        <a class="button" href="EditProductServlet?pID=${p.productID}">Update</a>
+                        <a class="button" href="DeleteProductServlet?pID=${p.productID}">Delete</a>
                     </td>    
         </tr>
         </c:forEach>
