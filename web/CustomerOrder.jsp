@@ -14,39 +14,46 @@
         <title>Customer Order Page</title>
     </head>
     <%
-        Order order = (Order) session.getAttribute("show");
-        String creationConfirmation = (String) request.getParameter("creationConfirmation");
+        Order order = (Order) session.getAttribute("order");
+                    String userid = request.getParameter("userid");
+                    String orderid = request.getParameter("orderid");
+                    String shippingaddressid = request.getParameter("shippingaddress");
+                    String orderdate = request.getParameter("orderdate");
+                    String shipdate = request.getParameter("shipdate");
+                    String orderstatus = request.getParameter("orderstatus");
     %>
     <body>
         <h1>Customer Order</h1>
-        <p class="right"> <a class="button21" href="addorder.jsp">Add Order</a> </p>
-        <p class="right"> <a class="button21" href="updateorder.jsp">Update Order</a> </p>
-        <p class="right"> <a class="button21" href="removeorder.jsp">Remove Order</a> </p>
-        <span><%=creationConfirmation != null ? creationConfirmation : ""%></span>
+        <p> Your User ID is: ${order.userID}</p>
+        <p> <a href="addorder.jsp" type="button" class="btn btn-secondary">Add Order</a> </p>
+        <p> <a href="updateorder.jsp" type="button" class="btn btn-secondary">Update Order</a> </p>
+        <p"> <a href="removeorder.jsp" type="button" class="btn btn-secondary ">Remove Order</a> </p>
         <form method="get">
             <form>
                 Search Order:
-                <input type="text" id="searchordernumber" onkeyup="myFunction()" placeholder="ID" title="Type in order ID">
-                <input type="text" id="searchorderdate" onkeyup="myFunction()" placeholder="Order Date" title="Type in a date">
+                <input type="text" placeholder="ID" title="Type in order ID">
+                <input type="text" placeholder="Order Date" title="Type in a date">
             </form>
-            <table border="1" id="ordertable">
+            <table border="1">
                 <tr>
                     <th>OrderID</th>
                     <th>Status of Order</th>
                     <th>Order Date</th>
                     <th>Shipping Date</th>
                 </tr>
-                <c:forEach order="$(show)" var="show">
+                <c:forEach order="${order}" var="order">
                 <tr>
-                                <td>${show.orderID}</td>
-                                <td>${show.orderStatus}</td>
-                                <td>${show.orderDate}</td>
-                                <td>${show.shipDate}</td>
+                                <td>${order.orderID}</td>
+                                <td>${order.orderStatus}</td>
+                                <td>${order.orderDate}</td>
+                                <td>${order.shipDate}</td>
                 </tr>
             </table>
         </form>
-        <div class="form-group">
-        <a class="form-text text-muted" href="accounts.jsp">Back to Account Page</a>
+                </br>
+                </br>
+        <div>
+        <a href="index.jsp" type="button" class="btn btn-lg btn-block">Back</a>
         </div>
     </body>
 </html>
