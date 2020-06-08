@@ -79,10 +79,10 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <a href="index.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Back</button></a>
+                        <a href="viewPayment.jsp"><button type="button" class="btn btn-secondary btn-lg btn-block">Save Payment</button></a>
                     </div>
                     <div class="form-group col">
-                        <a href="viewPayment.jsp"><button class="btn btn-primary btn-lg btn-block" type="submit">Save Payment</button></a>                
+                        <a href="paymentSuccess.jsp"><button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button></a>                
                     </div>
                 </div>
             </form>

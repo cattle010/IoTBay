@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <title>View Payment</title>
     </head>
     <body>
         <h1>View Payment</h1>
+        <p>View payments here</p>
+        <<form method="get"></form>
     </body>
 </html>
